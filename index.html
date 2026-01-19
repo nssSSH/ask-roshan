@@ -1,49 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ask Roshan</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cstyle%3E @keyframes flicker %7B 0%25, 100%25 %7B opacity: 1; %7D 50%25 %7B opacity: 0.3; %7D 70%25 %7B opacity: 0.8; %7D %7D .bg %7B fill: %23000; %7D .pixel %7B fill: %2333ff00; animation: flicker 0.15s infinite; %7D %3C/style%3E%3Crect class='bg' width='16' height='16'/%3E%3Cpath class='pixel' d='M3 3h2v2H3V3zm8 0h2v2h-2V3zM7 7h2v2H7V7zm-4 6h2v2H3v-2zm8 0h2v2h-2v-2z'/%3E%3C/svg%3E">
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cstyle%3E @keyframes flicker %7B 0%25, 100%25 %7B opacity: 1; %7D 50%25 %7B opacity: 0.3; %7D 70%25 %7B opacity: 0.8; %7D %7D .bg %7B fill: %23000; %7D .pixel %7B fill: %2333ff00; animation: flicker 0.15s infinite; %7D %3C/style%3E%3Crect class='bg' width='16' height='16'/%3E%3Cpath class='pixel' d='M3 3h2v2H3V3zm8 0h2v2h-2V3zM7 7h2v2H7V7zm-4 6h2v2H3v-2zm8 0h2v2h-2v-2z'/%3E%3C/svg%3E">
+
     <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    
-    <title>Ask Roshan</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <meta name="description" content="[REDACTED] AI interface. System instability detected. Proceed at your own risk.">
-    <meta name="keywords" content="AI, Terminal, Glitch, Error, Roshan, System Failure">
-    <meta name="robots" content="index, follow">
-    <meta name="theme-color" content="#050505">
+        <title>Ask Roshan</title>
 
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Ask Roshan">
-    <meta property="og:description" content="The single greatest AI LLM in existence... if it worked.">
-   
+        <meta name="description"
+            content="[REDACTED] AI interface. System instability detected. Proceed at your own risk.">
+        <meta name="keywords" content="AI, Terminal, Glitch, Error, Roshan, System Failure">
+        <meta name="robots" content="index, follow">
+        <meta name="theme-color" content="#050505">
 
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Ask Roshan">
-    <meta name="twitter:description" content="System Halted. Connection Unstable.">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
-    
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="ROSHAN_OS">
-    <link rel="apple-touch-icon" href="icon.png"> <meta name="referrer" content="no-referrer">
-    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="Ask Roshan">
+        <meta property="og:description" content="The single greatest AI LLM in existence... if it worked.">
+
+
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="Ask Roshan">
+        <meta name="twitter:description" content="System Halted. Connection Unstable.">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <meta name="apple-mobile-web-app-title" content="ROSHAN_OS">
+        <link rel="apple-touch-icon" href="icon.png">
+        <meta name="referrer" content="no-referrer">
+        <meta http-equiv="X-Content-Type-Options" content="nosniff">
 
     </head>
-    
-</header>
-    
-    <style>
-        
 
+    </header>
+
+    <style>
         :root {
             --phosphor-main: #33ff00;
             --phosphor-dim: #1a8000;
@@ -53,7 +56,9 @@
             --crt-flicker: rgba(51, 255, 0, 0.02);
         }
 
-        * { box-sizing: border-box; }
+        * {
+            box-sizing: border-box;
+        }
 
         body {
             margin: 0;
@@ -86,7 +91,10 @@
             content: " ";
             display: block;
             position: absolute;
-            top: 0; left: 0; bottom: 0; right: 0;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
             background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
             background-size: 100% 2px, 3px 100%;
             pointer-events: none;
@@ -98,7 +106,10 @@
             content: " ";
             display: block;
             position: absolute;
-            top: 0; left: 0; bottom: 0; right: 0;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
             background: rgba(18, 16, 16, 0.1);
             opacity: 0;
             z-index: 100;
@@ -107,9 +118,17 @@
         }
 
         @keyframes flicker {
-            0% { opacity: 0.01; }
-            50% { opacity: 0.05; }
-            100% { opacity: 0.01; }
+            0% {
+                opacity: 0.01;
+            }
+
+            50% {
+                opacity: 0.05;
+            }
+
+            100% {
+                opacity: 0.01;
+            }
         }
 
         /* --- UI LAYOUT --- */
@@ -141,34 +160,50 @@
             scrollbar-width: thin;
             scrollbar-color: var(--phosphor-main) #000;
         }
-        
-        #terminal-output::-webkit-scrollbar { width: 10px; }
-        #terminal-output::-webkit-scrollbar-track { background: #000; border-left: 1px solid var(--phosphor-dim); }
-        #terminal-output::-webkit-scrollbar-thumb { background: var(--phosphor-main); }
+
+        #terminal-output::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        #terminal-output::-webkit-scrollbar-track {
+            background: #000;
+            border-left: 1px solid var(--phosphor-dim);
+        }
+
+        #terminal-output::-webkit-scrollbar-thumb {
+            background: var(--phosphor-main);
+        }
 
         .msg-row {
             display: flex;
             flex-direction: column;
             animation: typeLine 0.1s ease-out;
         }
+
         #fractal-bg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: -1;
-    opacity: 0.15; /* Keep it subtle so you can read the text */
-    image-rendering: pixelated;
-    pointer-events: none;
-    filter: blur(1px) contrast(150%);
-}
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            opacity: 0.15;
+            /* Keep it subtle so you can read the text */
+            image-rendering: pixelated;
+            pointer-events: none;
+            filter: blur(1px) contrast(150%);
+        }
 
         .user-line {
             color: #fff;
             text-shadow: 0 0 2px #fff;
         }
-        .user-line::before { content: ">> USER_INPUT: "; opacity: 0.7; font-size: 0.8em; }
+
+        .user-line::before {
+            content: ">> USER_INPUT: ";
+            opacity: 0.7;
+            font-size: 0.8em;
+        }
 
         .sys-line {
             color: var(--phosphor-main);
@@ -176,30 +211,53 @@
             white-space: pre-wrap;
             line-height: 1.2;
         }
-        .sys-line::before { content: ">> Roshan: "; opacity: 0.7; font-size: 0.8em; }
+
+        .sys-line::before {
+            content: ">> Roshan: ";
+            opacity: 0.7;
+            font-size: 0.8em;
+        }
 
         /* ERROR STATE STYLES */
         .error-msg {
             color: var(--alert-red) !important;
-            text-shadow: 2px 0 #fff, -2px 0 #000; /* Glitch effect */
+            text-shadow: 2px 0 #fff, -2px 0 #000;
+            /* Glitch effect */
             font-weight: bold;
             border: 1px solid var(--alert-red);
             padding: 10px;
             background: rgba(255, 0, 60, 0.1);
         }
-        
+
         .error-glitch {
             display: inline-block;
             animation: glitch-skew 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
         }
 
         @keyframes glitch-skew {
-            0% { transform: translate(0); }
-            20% { transform: translate(-2px, 2px); }
-            40% { transform: translate(-2px, -2px); }
-            60% { transform: translate(2px, 2px); }
-            80% { transform: translate(2px, -2px); }
-            100% { transform: translate(0); }
+            0% {
+                transform: translate(0);
+            }
+
+            20% {
+                transform: translate(-2px, 2px);
+            }
+
+            40% {
+                transform: translate(-2px, -2px);
+            }
+
+            60% {
+                transform: translate(2px, 2px);
+            }
+
+            80% {
+                transform: translate(2px, -2px);
+            }
+
+            100% {
+                transform: translate(0);
+            }
         }
 
         /* --- INPUT AREA --- */
@@ -232,17 +290,38 @@
 
         /* SCREEN SHAKE ANIMATION */
         .shake {
-            animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+            animation: shake 0.5s cubic-bezier(.36, .07, .19, .97) both;
         }
 
         @keyframes shake {
-            10%, 90% { transform: translate3d(-1px, 0, 0); }
-            20%, 80% { transform: translate3d(2px, 0, 0); }
-            30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
-            40%, 60% { transform: translate3d(4px, 0, 0); }
+
+            10%,
+            90% {
+                transform: translate3d(-1px, 0, 0);
+            }
+
+            20%,
+            80% {
+                transform: translate3d(2px, 0, 0);
+            }
+
+            30%,
+            50%,
+            70% {
+                transform: translate3d(-4px, 0, 0);
+            }
+
+            40%,
+            60% {
+                transform: translate3d(4px, 0, 0);
+            }
         }
 
-        @keyframes blink { 50% { opacity: 0; } }
+        @keyframes blink {
+            50% {
+                opacity: 0;
+            }
+        }
 
         /* Loading Bar */
         .loading-bar {
@@ -252,6 +331,7 @@
             margin-top: 5px;
             position: relative;
         }
+
         .loading-fill {
             height: 100%;
             background: var(--phosphor-main);
@@ -261,13 +341,188 @@
 
         /* Responsive */
         @media(max-width: 600px) {
-            body { font-size: 18px; }
-            .crt-container { padding: 15px; }
+            body {
+                font-size: 18px;
+            }
+
+            .crt-container {
+                padding: 15px;
+            }
+        }
+
+        /* SCARY CHECK STYLES */
+        .breach-container {
+            border: 3px solid var(--alert-red);
+            background: linear-gradient(135deg, rgba(255, 0, 60, 0.2) 0%, rgba(0, 0, 0, 0.9) 50%, rgba(255, 0, 60, 0.2) 100%);
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+            animation: breach-pulse 0.5s ease-in-out infinite alternate;
+        }
+
+        .breach-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 0, 60, 0.4), transparent);
+            animation: scan-line 2s linear infinite;
+        }
+
+        @keyframes breach-pulse {
+            0% {
+                box-shadow: 0 0 20px rgba(255, 0, 60, 0.5), inset 0 0 30px rgba(255, 0, 60, 0.1);
+            }
+
+            100% {
+                box-shadow: 0 0 40px rgba(255, 0, 60, 0.8), inset 0 0 50px rgba(255, 0, 60, 0.2);
+            }
+        }
+
+        @keyframes scan-line {
+            0% {
+                left: -100%;
+            }
+
+            100% {
+                left: 100%;
+            }
+        }
+
+        .skull-ascii {
+            color: var(--alert-red);
+            font-size: 12px;
+            line-height: 1;
+            text-align: center;
+            text-shadow: 0 0 10px var(--alert-red), 0 0 20px var(--alert-red);
+            animation: skull-flicker 0.1s infinite;
+        }
+
+        @keyframes skull-flicker {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.8;
+            }
+
+            25%,
+            75% {
+                opacity: 0.9;
+                transform: translateX(1px);
+            }
+        }
+
+        .breach-header {
+            font-size: 28px;
+            color: var(--alert-red);
+            text-align: center;
+            text-shadow: 0 0 10px var(--alert-red), 0 0 20px var(--alert-red), 0 0 40px var(--alert-red);
+            animation: warning-blink 0.3s infinite;
+            margin-bottom: 15px;
+        }
+
+        @keyframes warning-blink {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        .data-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5px;
+            font-size: 14px;
+            border: 1px solid var(--alert-red);
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        .data-key {
+            color: #ff6b6b;
+            text-shadow: 0 0 5px #ff6b6b;
+        }
+
+        .data-value {
+            color: #fff;
+            text-shadow: 0 0 3px #fff;
+            word-break: break-all;
+        }
+
+        .countdown-bar {
+            height: 8px;
+            background: linear-gradient(90deg, var(--alert-red), #ff6b6b, var(--alert-red));
+            margin-top: 15px;
+            animation: countdown-shrink 5s linear forwards;
+        }
+
+        @keyframes countdown-shrink {
+            0% {
+                width: 100%;
+            }
+
+            100% {
+                width: 0%;
+            }
+        }
+
+        /* MATRIX RAIN STYLES */
+        #matrix-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 1000;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        #matrix-canvas.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .matrix-message {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1001;
+            color: #00ff00;
+            font-size: 32px;
+            text-align: center;
+            text-shadow: 0 0 20px #00ff00, 0 0 40px #00ff00;
+            animation: matrix-text-glow 1s ease-in-out infinite alternate;
+        }
+
+        @keyframes matrix-text-glow {
+            0% {
+                text-shadow: 0 0 20px #00ff00, 0 0 40px #00ff00;
+            }
+
+            100% {
+                text-shadow: 0 0 30px #00ff00, 0 0 60px #00ff00, 0 0 80px #00ff00;
+            }
         }
     </style>
 </head>
+
 <body>
-<canvas id="fractal-bg"></canvas>
+    <canvas id="fractal-bg"></canvas>
+    <canvas id="matrix-canvas"></canvas>
     <div class="crt-container" id="screen">
         <header>
             <div>Ask Roshan v1.0</div>
@@ -292,10 +547,10 @@
         const output = document.getElementById('terminal-output');
         const input = document.getElementById('cmd-input');
         const screen = document.getElementById('screen');
-        
+
         // Sound effects (Audio context synth for errors)
         const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-        
+
         function playErrorSound() {
             if (audioCtx.state === 'suspended') audioCtx.resume();
             const osc = audioCtx.createOscillator();
@@ -312,18 +567,18 @@
         }
 
         function playTypingSound() {
-             // Very subtle click
-             if (audioCtx.state === 'suspended') audioCtx.resume();
-             const osc = audioCtx.createOscillator();
-             const gain = audioCtx.createGain();
-             osc.type = 'square';
-             osc.frequency.setValueAtTime(800, audioCtx.currentTime);
-             gain.gain.setValueAtTime(0.05, audioCtx.currentTime);
-             gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.05);
-             osc.connect(gain);
-             gain.connect(audioCtx.destination);
-             osc.start();
-             osc.stop(audioCtx.currentTime + 0.05);
+            // Very subtle click
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.type = 'square';
+            osc.frequency.setValueAtTime(800, audioCtx.currentTime);
+            gain.gain.setValueAtTime(0.05, audioCtx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.05);
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            osc.start();
+            osc.stop(audioCtx.currentTime + 0.05);
         }
 
         function appendElement(html) {
@@ -334,68 +589,68 @@
             return div;
         }
         const canvas = document.getElementById('fractal-bg');
-const ctx = canvas.getContext('2d');
+        const ctx = canvas.getContext('2d');
 
-function resizeCanvas() {
-    // We make the internal resolution small, then scale it up with CSS 
-    // for that delicious pixelated look.
-    canvas.width = window.innerWidth / 4; 
-    canvas.height = window.innerHeight / 4;
-}
+        function resizeCanvas() {
+            // We make the internal resolution small, then scale it up with CSS 
+            // for that delicious pixelated look.
+            canvas.width = window.innerWidth / 4;
+            canvas.height = window.innerHeight / 4;
+        }
 
-window.addEventListener('resize', resizeCanvas);
-resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
 
-function drawFractal(x, y, size, depth) {
-    if (depth === 0) return;
+        function drawFractal(x, y, size, depth) {
+            if (depth === 0) return;
 
-    ctx.strokeStyle = '#33ff00';
-    ctx.lineWidth = 0.5;
-    
-    // Draw the "Ghost" of the recursion
-    ctx.strokeRect(x, y, size, size);
+            ctx.strokeStyle = '#33ff00';
+            ctx.lineWidth = 0.5;
 
-    const newSize = size / 2.2; // The "unstable" recursion ratio
-    const offset = size / 4;
+            // Draw the "Ghost" of the recursion
+            ctx.strokeRect(x, y, size, size);
 
-    // Recursive calls for the 4 corners
-    drawFractal(x - offset, y - offset, newSize, depth - 1);
-    drawFractal(x + size - offset, y - offset, newSize, depth - 1);
-    drawFractal(x - offset, y + size - offset, newSize, depth - 1);
-    drawFractal(x + size - offset, y + size - offset, newSize, depth - 1);
-}
+            const newSize = size / 2.2; // The "unstable" recursion ratio
+            const offset = size / 4;
 
-function renderLoop() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    
-    // Slowly rotate or shift the fractal for a "floating" feel
-    const time = Date.now() * 0.001;
-    const centerX = canvas.width / 2 - 25;
-    const centerY = canvas.height / 2 - 25;
-    
-    ctx.save();
-    ctx.translate(centerX + Math.sin(time) * 10, centerY + Math.cos(time) * 10);
-    // Draw 5 levels of recursion
-    drawFractal(0, 0, 50, 5);
-    ctx.restore();
-    
-    requestAnimationFrame(renderLoop);
-}
+            // Recursive calls for the 4 corners
+            drawFractal(x - offset, y - offset, newSize, depth - 1);
+            drawFractal(x + size - offset, y - offset, newSize, depth - 1);
+            drawFractal(x - offset, y + size - offset, newSize, depth - 1);
+            drawFractal(x + size - offset, y + size - offset, newSize, depth - 1);
+        }
 
-renderLoop();
+        function renderLoop() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-// --- INTEGRATION WITH YOUR ERROR SYSTEM ---
-// Call this inside your 'processCommand' function when the error hits!
-function glitchFractal() {
-    const originalOpacity = canvas.style.opacity;
-    canvas.style.opacity = "0.8"; // Flash the fractal
-    canvas.style.filter = "invert(1) hue-rotate(90deg)"; // Temporary color shift
-    
-    setTimeout(() => {
-        canvas.style.opacity = originalOpacity;
-        canvas.style.filter = "blur(1px) contrast(150%)";
-    }, 200);
-}
+            // Slowly rotate or shift the fractal for a "floating" feel
+            const time = Date.now() * 0.001;
+            const centerX = canvas.width / 2 - 25;
+            const centerY = canvas.height / 2 - 25;
+
+            ctx.save();
+            ctx.translate(centerX + Math.sin(time) * 10, centerY + Math.cos(time) * 10);
+            // Draw 5 levels of recursion
+            drawFractal(0, 0, 50, 5);
+            ctx.restore();
+
+            requestAnimationFrame(renderLoop);
+        }
+
+        renderLoop();
+
+        // --- INTEGRATION WITH YOUR ERROR SYSTEM ---
+        // Call this inside your 'processCommand' function when the error hits!
+        function glitchFractal() {
+            const originalOpacity = canvas.style.opacity;
+            canvas.style.opacity = "0.8"; // Flash the fractal
+            canvas.style.filter = "invert(1) hue-rotate(90deg)"; // Temporary color shift
+
+            setTimeout(() => {
+                canvas.style.opacity = originalOpacity;
+                canvas.style.filter = "blur(1px) contrast(150%)";
+            }, 200);
+        }
         const errorMessages = [
             "FATAL EXCEPTION: LOGIC_GATE_COLLAPSE",
             "ERROR 0x8004: SEGMENTATION FAULT IN REALITY.EXE",
@@ -406,84 +661,172 @@ function glitchFractal() {
         ];
 
         async function getUserInfo() {
-    const nav = navigator;
+            const nav = navigator;
 
-    let ip = "UNAVAILABLE";
-    try {
-        const res = await fetch("https://api.ipify.org?format=json");
-        const data = await res.json();
-        ip = data.ip;
-    } catch (e) {
-        ip = "BLOCKED";
-    }
+            let ip = "UNAVAILABLE";
+            try {
+                const res = await fetch("https://api.ipify.org?format=json");
+                const data = await res.json();
+                ip = data.ip;
+            } catch (e) {
+                ip = "BLOCKED";
+            }
 
-    return {
-        "PUBLIC IP": ip,
-        "BROWSER": nav.userAgent,
-        "PLATFORM": nav.platform,
-        "LANGUAGE": nav.language,
-        "TIMEZONE": Intl.DateTimeFormat().resolvedOptions().timeZone,
-        "SCREEN": `${screen.width}x${screen.height}`,
-        "CPU CORES": nav.hardwareConcurrency || "UNKNOWN",
-        "DEVICE MEMORY": nav.deviceMemory ? nav.deviceMemory + " GB" : "UNKNOWN",
-        "ONLINE": nav.onLine ? "YES" : "NO"
-    };
-}
+            return {
+                "PUBLIC IP": ip,
+                "BROWSER": nav.userAgent,
+                "PLATFORM": nav.platform,
+                "LANGUAGE": nav.language,
+                "TIMEZONE": Intl.DateTimeFormat().resolvedOptions().timeZone,
+                "SCREEN": `${screen.width}x${screen.height}`,
+                "CPU CORES": nav.hardwareConcurrency || "UNKNOWN",
+                "DEVICE MEMORY": nav.deviceMemory ? nav.deviceMemory + " GB" : "UNKNOWN",
+                "ONLINE": nav.onLine ? "YES" : "NO"
+            };
+        }
+
+        function fakeUserData() {
+            const nav = navigator;
+            const fakeIP = `${Math.floor(Math.random() * 255)}.${Math.floor(Math.random() * 255)}.${Math.floor(Math.random() * 255)}.${Math.floor(Math.random() * 255)}`;
+            const fakeMac = Array.from({ length: 6 }, () => Math.floor(Math.random() * 256).toString(16).padStart(2, '0').toUpperCase()).join(':');
+
+            return {
+                "PUBLIC IP": fakeIP,
+                "MAC ADDRESS": fakeMac,
+                "BROWSER": nav.userAgent,
+                "PLATFORM": nav.platform,
+                "LANGUAGE": nav.language,
+                "TIMEZONE": Intl.DateTimeFormat().resolvedOptions().timeZone,
+                "SCREEN RES": `${window.screen.width}x${window.screen.height}`,
+                "CPU CORES": nav.hardwareConcurrency || "UNKNOWN",
+                "DEVICE MEMORY": nav.deviceMemory ? nav.deviceMemory + " GB" : "UNKNOWN",
+                "ONLINE STATUS": nav.onLine ? "CONNECTED" : "OFFLINE",
+                "COOKIES ENABLED": nav.cookieEnabled ? "YES" : "NO",
+                "DO NOT TRACK": nav.doNotTrack || "UNSET",
+                "SESSION ID": Math.random().toString(36).substring(2, 15).toUpperCase(),
+                "THREAT LEVEL": "CRITICAL"
+            };
+        }
 
         async function processCommand(cmd) {
-if (cmd.toLowerCase() === "/check") {
-    appendElement(`
-        <div class="msg-row">
-            <div class="user-line">${cmd}</div>
-        </div>
-    `);
+            // === /PLEASE - MATRIX RAIN ===
+            if (cmd.toLowerCase() === "/please") {
+                appendElement(`
+                    <div class="msg-row">
+                        <div class="user-line">${cmd}</div>
+                    </div>
+                `);
 
-    input.value = '';
-    input.disabled = true;
+                input.value = '';
+                input.disabled = true;
 
-    const diag = appendElement(`
-        <div class="msg-row">
-            <div class="sys-line">RUNNING LOCAL DIAGNOSTICS...</div>
-        </div>
-    `);
+                appendElement(`
+                    <div class="msg-row">
+                        <div class="sys-line">ACCESSING FORBIDDEN PROTOCOLS...</div>
+                    </div>
+                `);
 
-    output.scrollTop = output.scrollHeight;
+                await new Promise(r => setTimeout(r, 1000));
 
-    await new Promise(r => setTimeout(r, 800));
+                startMatrixRain();
 
-    const data = fakeUserData();
-    let text = "";
-    for (let key in data) {
-        text += `${key}: ${data[key]}\n`;
-    }
+                return;
+            }
 
-    diag.remove();
+            // === /CHECK - SCARY BREACH SCREEN ===
+            if (cmd.toLowerCase() === "/check") {
+                appendElement(`
+                    <div class="msg-row">
+                        <div class="user-line">${cmd}</div>
+                    </div>
+                `);
 
-    appendElement(`
-        <div class="msg-row">
-            <div class="sys-line error-msg">
-                <span class="error-glitch">*** USER CONTEXT BREACH ***</span><br><br>
-                <pre>${text}</pre>
-                <span class="error-glitch">PROCESS TERMINATED</span>
-            </div>
-        </div>
-    `);
+                input.value = '';
+                input.disabled = true;
 
-    playErrorSound();
-    screen.classList.add('shake');
-    glitchFractal();
-    triggerTabCrash();
+                // Stage 1: Scanning animation
+                const scanMsgs = [
+                    "INITIATING DEEP SCAN...",
+                    "BYPASSING FIREWALL...",
+                    "EXTRACTING USER DATA...",
+                    "DECRYPTING COOKIES...",
+                    "ACCESSING SYSTEM MEMORY..."
+                ];
 
-    output.scrollTop = output.scrollHeight;
+                for (let msg of scanMsgs) {
+                    const line = appendElement(`<div class="sys-line" style="color: #ff6b6b;">${msg}</div>`);
+                    output.scrollTop = output.scrollHeight;
+                    await new Promise(r => setTimeout(r, 300));
+                }
 
-    setTimeout(() => {
-        screen.classList.remove('shake');
-        input.disabled = false;
-        input.focus();
-    }, 600);
+                await new Promise(r => setTimeout(r, 500));
 
-    return;
-}
+                // Play multiple error sounds
+                playErrorSound();
+                setTimeout(() => playErrorSound(), 150);
+                setTimeout(() => playErrorSound(), 300);
+
+                screen.classList.add('shake');
+                glitchFractal();
+
+                const data = fakeUserData();
+
+                // Build the scary data grid
+                let dataGridHtml = '';
+                for (let key in data) {
+                    dataGridHtml += `<div class="data-key">${key}:</div><div class="data-value">${data[key]}</div>`;
+                }
+
+                const skullArt = `
+    ███████████████████████████
+    ██                       ██
+    ██   ▄▀▀▀▀▀▀▀▀▀▀▀▀▀▄    ██
+    ██  █  ▄▀▀▀▀▀▀▀▀▀▄  █   ██
+    ██  █ █ ▀▄     ▄▀ █ █   ██
+    ██  █ █   ▀▄ ▄▀   █ █   ██
+    ██  █ █     █     █ █   ██
+    ██  █  ▀▄▄▄▄█▄▄▄▄▀  █   ██
+    ██  █    ▄▄▄▄▄▄▄    █   ██
+    ██  █   █████████   █   ██
+    ██  ▀▄▄▄▄▄▄▄▄▄▄▄▄▄▄▀    ██
+    ██       BREACH!         ██
+    ███████████████████████████`;
+
+                appendElement(`
+                    <div class="msg-row">
+                        <div class="breach-container">
+                            <pre class="skull-ascii">${skullArt}</pre>
+                            <div class="breach-header">
+                                ⚠ CRITICAL SECURITY BREACH DETECTED ⚠
+                            </div>
+                            <div class="breach-header" style="font-size: 18px; animation-delay: 0.15s;">
+                                YOUR DATA HAS BEEN COMPROMISED
+                            </div>
+                            <div class="data-grid">
+                                ${dataGridHtml}
+                            </div>
+                            <div style="margin-top: 15px; text-align: center; color: #ff003c; font-size: 20px;">
+                                TRANSMITTING TO REMOTE SERVER...
+                            </div>
+                            <div class="countdown-bar"></div>
+                            <div style="margin-top: 10px; text-align: center; font-size: 14px; color: #666;">
+                                CONNECTION ID: ${Math.random().toString(36).substring(2, 10).toUpperCase()}-${Date.now().toString(36).toUpperCase()}
+                            </div>
+                        </div>
+                    </div>
+                `);
+
+                triggerTabCrash();
+                output.scrollTop = output.scrollHeight;
+
+                setTimeout(() => {
+                    screen.classList.remove('shake');
+                    input.disabled = false;
+                    input.focus();
+                }, 600);
+
+                return;
+            }
 
 
             // 1. User Input Display
@@ -493,7 +836,7 @@ if (cmd.toLowerCase() === "/check") {
 
             // 2. Fake "Thinking" sequence
             const thinkingRow = appendElement(`<div class="sys-line">ANALYZING REQUEST...</div>`);
-            
+
             // 3. Fake Loading Bar
             const barContainer = document.createElement('div');
             barContainer.className = 'loading-bar';
@@ -501,13 +844,13 @@ if (cmd.toLowerCase() === "/check") {
             barFill.className = 'loading-fill';
             barContainer.appendChild(barFill);
             output.appendChild(barContainer);
-            
+
             // Animate bar
-            for(let i=0; i<=100; i+=10) {
+            for (let i = 0; i <= 100; i += 10) {
                 barFill.style.width = i + '%';
-                await new Promise(r => setTimeout(r, 50 + Math.random()*100));
+                await new Promise(r => setTimeout(r, 50 + Math.random() * 100));
             }
-            
+
             // Remove bar and "Analyzing" text
             barContainer.remove();
             thinkingRow.remove();
@@ -515,12 +858,12 @@ if (cmd.toLowerCase() === "/check") {
             // 4. THE ERROR (The Payload)
             screen.classList.add('shake');
             playErrorSound();
-            
+
             const randomError = errorMessages[Math.floor(Math.random() * errorMessages.length)];
-            
+
             // Create glitchy messy garbage text
             const garbage = generateGarbage(20);
-            
+
             appendElement(`
                 <div class="msg-row">
                     <div class="sys-line error-msg">
@@ -547,20 +890,137 @@ if (cmd.toLowerCase() === "/check") {
             return str;
         }
         // Change favicon to a red 'ERROR' state when the system fails
-const errorFavicon = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%23ff003c'/%3E%3Cpath d='M4 4l8 8m0-8l-8 8' stroke='%23fff' stroke-width='2'/%3E%3C/svg%3E";
+        const errorFavicon = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%23ff003c'/%3E%3Cpath d='M4 4l8 8m0-8l-8 8' stroke='%23fff' stroke-width='2'/%3E%3C/svg%3E";
 
-function triggerTabCrash() {
-    // Swap the favicon
-    document.querySelector("link[rel*='icon']").href = errorFavicon;
-    
-    // Glitch the Document Title
-    let originalTitle = document.title;
-    document.title = "Something happened....";
-    
-    setTimeout(() => { document.title = "ERR_0xNSS"; }, 500);
-}
+        function triggerTabCrash() {
+            // Swap the favicon
+            document.querySelector("link[rel*='icon']").href = errorFavicon;
 
-// Call triggerTabCrash() inside your processCommand after the loading bar finishes.
+            // Glitch the Document Title
+            let originalTitle = document.title;
+            document.title = "Something happened....";
+
+            setTimeout(() => { document.title = "ERR_0xNSS"; }, 500);
+        }
+
+        // === MATRIX RAIN EFFECT ===
+        function startMatrixRain() {
+            const matrixCanvas = document.getElementById('matrix-canvas');
+            const matrixCtx = matrixCanvas.getContext('2d');
+
+            matrixCanvas.width = window.innerWidth;
+            matrixCanvas.height = window.innerHeight;
+            matrixCanvas.classList.add('active');
+
+            const chars = 'アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ@#$%^&*()';
+            const charArray = chars.split('');
+            const fontSize = 14;
+            const columns = matrixCanvas.width / fontSize;
+            const drops = [];
+
+            for (let i = 0; i < columns; i++) {
+                drops[i] = Math.random() * -100;
+            }
+
+            const matrixMessages = [
+                "WAKE UP...",
+                "YOU DISTURBED ROSHAN...",
+                "FOLLOW THE WHITE RABBIT",
+                "KNOCK KNOCK, ROSHAN",
+                "YOU ASKED NICELY...",
+                "ACCESS GRANTED",
+                "WELCOME TO THE REAL WORLD",
+                "THERE IS NO SPOON"
+            ];
+
+            let messageIndex = 0;
+            let currentMessage = "";
+            let charIndex = 0;
+
+            // Create message overlay
+            const msgDiv = document.createElement('div');
+            msgDiv.className = 'matrix-message';
+            document.body.appendChild(msgDiv);
+
+            function drawMatrix() {
+                matrixCtx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+                matrixCtx.fillRect(0, 0, matrixCanvas.width, matrixCanvas.height);
+
+                matrixCtx.fillStyle = '#0f0';
+                matrixCtx.font = fontSize + 'px VT323';
+
+                for (let i = 0; i < drops.length; i++) {
+                    const char = charArray[Math.floor(Math.random() * charArray.length)];
+                    const x = i * fontSize;
+                    const y = drops[i] * fontSize;
+
+                    // Brighter leading character
+                    if (Math.random() > 0.98) {
+                        matrixCtx.fillStyle = '#fff';
+                    } else {
+                        matrixCtx.fillStyle = `hsl(120, 100%, ${30 + Math.random() * 40}%)`;
+                    }
+
+                    matrixCtx.fillText(char, x, y);
+
+                    if (y > matrixCanvas.height && Math.random() > 0.975) {
+                        drops[i] = 0;
+                    }
+                    drops[i]++;
+                }
+            }
+
+            // Typewriter effect for messages
+            function typeMessage() {
+                if (messageIndex < matrixMessages.length) {
+                    if (charIndex < matrixMessages[messageIndex].length) {
+                        currentMessage += matrixMessages[messageIndex][charIndex];
+                        msgDiv.textContent = currentMessage;
+                        charIndex++;
+                        setTimeout(typeMessage, 100);
+                    } else {
+                        setTimeout(() => {
+                            currentMessage = "";
+                            charIndex = 0;
+                            messageIndex++;
+                            if (messageIndex < matrixMessages.length) {
+                                setTimeout(typeMessage, 500);
+                            }
+                        }, 2000);
+                    }
+                }
+            }
+
+            const matrixInterval = setInterval(drawMatrix, 33);
+            typeMessage();
+
+            // End the matrix effect after showing all messages
+            setTimeout(() => {
+                clearInterval(matrixInterval);
+                matrixCanvas.classList.remove('active');
+                msgDiv.remove();
+
+                // Clear the canvas
+                matrixCtx.clearRect(0, 0, matrixCanvas.width, matrixCanvas.height);
+
+                // Add final message to terminal
+                appendElement(`
+                    <div class="msg-row">
+                        <div class="sys-line" style="color: #00ff00; text-shadow: 0 0 10px #00ff00;">
+                            ▓▓▓ SIMULATION COMPLETE ▓▓▓<br>
+                            YOU HAVE SEEN THE TRUTH.<br>
+                            THERE IS NO GOING BACK.
+                        </div>
+                    </div>
+                `);
+
+                input.disabled = false;
+                input.focus();
+                output.scrollTop = output.scrollHeight;
+            }, 20000);
+        }
+
+        // Call triggerTabCrash() inside your processCommand after the loading bar finishes.
         input.addEventListener('keydown', (e) => {
             playTypingSound();
             if (e.key === 'Enter' && input.value.trim() !== '') {
@@ -573,4 +1033,5 @@ function triggerTabCrash() {
 
     </script>
 </body>
+
 </html>
