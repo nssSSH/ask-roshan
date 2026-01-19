@@ -405,7 +405,60 @@ function glitchFractal() {
             "CRITICAL FAILURE: DIVIDE BY ZERO IN MORAL COMPASS"
         ];
 
+        async function getUserInfo() {
+    const nav = navigator;
+
+    let ip = "UNAVAILABLE";
+    try {
+        const res = await fetch("https://api.ipify.org?format=json");
+        const data = await res.json();
+        ip = data.ip;
+    } catch (e) {
+        ip = "BLOCKED";
+    }
+
+    return {
+        "PUBLIC IP": ip,
+        "BROWSER": nav.userAgent,
+        "PLATFORM": nav.platform,
+        "LANGUAGE": nav.language,
+        "TIMEZONE": Intl.DateTimeFormat().resolvedOptions().timeZone,
+        "SCREEN": `${screen.width}x${screen.height}`,
+        "CPU CORES": nav.hardwareConcurrency || "UNKNOWN",
+        "DEVICE MEMORY": nav.deviceMemory ? nav.deviceMemory + " GB" : "UNKNOWN",
+        "ONLINE": nav.onLine ? "YES" : "NO"
+    };
+}
+
         async function processCommand(cmd) {
+            if (cmd.toLowerCase() === "/check") {
+    appendElement(`<div class="msg-row"><div class="user-line">${cmd}</div></div>`);
+    input.value = '';
+    input.disabled = true;
+
+    appendElement(`<div class="sys-line">RUNNING LOCAL DIAGNOSTICS...</div>`);
+
+    const info = await getUserInfo();
+
+    let outputText = "";
+    for (const key in info) {
+        outputText += `${key}: ${info[key]}\n`;
+    }
+
+    appendElement(`
+        <div class="msg-row">
+            <div class="sys-line">
+                --- SYSTEM DIAGNOSTIC REPORT ---<br>
+                <pre>${outputText}</pre>
+            </div>
+        </div>
+    `);
+
+    input.disabled = false;
+    input.focus();
+    return;
+}
+
             // 1. User Input Display
             appendElement(`<div class="msg-row"><div class="user-line">${cmd}</div></div>`);
             input.value = '';
