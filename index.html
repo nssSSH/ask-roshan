@@ -11,7 +11,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     
-    <title>R﻿O﻿S﻿H﻿A﻿N﻿_﻿O﻿S // ERROR_DETECTION</title>
+    <title>Ask Roshan</title>
 
     <meta name="description" content="[REDACTED] AI interface. System instability detected. Proceed at your own risk.">
     <meta name="keywords" content="AI, Terminal, Glitch, Error, Roshan, System Failure">
@@ -42,6 +42,7 @@
 </header>
     
     <style>
+        
 
         :root {
             --phosphor-main: #33ff00;
@@ -150,6 +151,18 @@
             flex-direction: column;
             animation: typeLine 0.1s ease-out;
         }
+        #fractal-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    opacity: 0.15; /* Keep it subtle so you can read the text */
+    image-rendering: pixelated;
+    pointer-events: none;
+    filter: blur(1px) contrast(150%);
+}
 
         .user-line {
             color: #fff;
@@ -254,7 +267,7 @@
     </style>
 </head>
 <body>
-
+<canvas id="fractal-bg"></canvas>
     <div class="crt-container" id="screen">
         <header>
             <div>Ask Roshan v1.0</div>
@@ -320,7 +333,69 @@
             output.scrollTop = output.scrollHeight;
             return div;
         }
+        const canvas = document.getElementById('fractal-bg');
+const ctx = canvas.getContext('2d');
 
+function resizeCanvas() {
+    // We make the internal resolution small, then scale it up with CSS 
+    // for that delicious pixelated look.
+    canvas.width = window.innerWidth / 4; 
+    canvas.height = window.innerHeight / 4;
+}
+
+window.addEventListener('resize', resizeCanvas);
+resizeCanvas();
+
+function drawFractal(x, y, size, depth) {
+    if (depth === 0) return;
+
+    ctx.strokeStyle = '#33ff00';
+    ctx.lineWidth = 0.5;
+    
+    // Draw the "Ghost" of the recursion
+    ctx.strokeRect(x, y, size, size);
+
+    const newSize = size / 2.2; // The "unstable" recursion ratio
+    const offset = size / 4;
+
+    // Recursive calls for the 4 corners
+    drawFractal(x - offset, y - offset, newSize, depth - 1);
+    drawFractal(x + size - offset, y - offset, newSize, depth - 1);
+    drawFractal(x - offset, y + size - offset, newSize, depth - 1);
+    drawFractal(x + size - offset, y + size - offset, newSize, depth - 1);
+}
+
+function renderLoop() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    // Slowly rotate or shift the fractal for a "floating" feel
+    const time = Date.now() * 0.001;
+    const centerX = canvas.width / 2 - 25;
+    const centerY = canvas.height / 2 - 25;
+    
+    ctx.save();
+    ctx.translate(centerX + Math.sin(time) * 10, centerY + Math.cos(time) * 10);
+    // Draw 5 levels of recursion
+    drawFractal(0, 0, 50, 5);
+    ctx.restore();
+    
+    requestAnimationFrame(renderLoop);
+}
+
+renderLoop();
+
+// --- INTEGRATION WITH YOUR ERROR SYSTEM ---
+// Call this inside your 'processCommand' function when the error hits!
+function glitchFractal() {
+    const originalOpacity = canvas.style.opacity;
+    canvas.style.opacity = "0.8"; // Flash the fractal
+    canvas.style.filter = "invert(1) hue-rotate(90deg)"; // Temporary color shift
+    
+    setTimeout(() => {
+        canvas.style.opacity = originalOpacity;
+        canvas.style.filter = "blur(1px) contrast(150%)";
+    }, 200);
+}
         const errorMessages = [
             "FATAL EXCEPTION: LOGIC_GATE_COLLAPSE",
             "ERROR 0x8004: SEGMENTATION FAULT IN REALITY.EXE",
