@@ -446,13 +446,15 @@ function glitchFractal() {
     }
 
     appendElement(`
-        <div class="msg-row">
-            <div class="sys-line">
-                --- SYSTEM DIAGNOSTIC REPORT ---<br>
-                <pre>${outputText}</pre>
-            </div>
+    <div class="msg-row">
+        <div class="sys-line error-msg">
+            <span class="error-glitch">system level check...</span><br><br>
+            <pre>${text}</pre>
+            <span class="error-glitch">Hello... there</span>
         </div>
-    `);
+    </div>
+`);
+
 
     input.disabled = false;
     input.focus();
