@@ -517,6 +517,333 @@
                 text-shadow: 0 0 30px #00ff00, 0 0 60px #00ff00, 0 0 80px #00ff00;
             }
         }
+
+        /* === /POSSESSED STYLES === */
+        .possessed-mode {
+            animation: possessed-shake 0.05s infinite, color-distort 0.1s infinite;
+        }
+
+        @keyframes possessed-shake {
+
+            0%,
+            100% {
+                transform: translate(0);
+            }
+
+            25% {
+                transform: translate(-2px, 1px) rotate(-0.5deg);
+            }
+
+            50% {
+                transform: translate(2px, -1px) rotate(0.5deg);
+            }
+
+            75% {
+                transform: translate(-1px, -1px) rotate(-0.25deg);
+            }
+        }
+
+        @keyframes color-distort {
+            0% {
+                filter: hue-rotate(0deg);
+            }
+
+            50% {
+                filter: hue-rotate(180deg) saturate(2);
+            }
+
+            100% {
+                filter: hue-rotate(360deg);
+            }
+        }
+
+        .demonic-text {
+            color: #ff0000 !important;
+            text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000, 0 0 40px #8b0000;
+            animation: demonic-pulse 0.2s infinite;
+            font-size: 28px;
+        }
+
+        @keyframes demonic-pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.8;
+                transform: scale(1.02);
+            }
+        }
+
+        /* === /SURVEILLANCE STYLES === */
+        .webcam-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .webcam-frame {
+            width: 640px;
+            height: 480px;
+            border: 4px solid #ff003c;
+            background: linear-gradient(135deg, #111 0%, #000 100%);
+            position: relative;
+            box-shadow: 0 0 50px rgba(255, 0, 60, 0.5);
+        }
+
+        .rec-indicator {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #ff003c;
+            font-size: 24px;
+            animation: rec-blink 1s infinite;
+        }
+
+        .rec-dot {
+            width: 15px;
+            height: 15px;
+            background: #ff003c;
+            border-radius: 50%;
+            animation: rec-blink 1s infinite;
+        }
+
+        @keyframes rec-blink {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.3;
+            }
+        }
+
+        .webcam-static {
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(255, 255, 255, 0.03) 2px,
+                    rgba(255, 255, 255, 0.03) 4px);
+            animation: static-move 0.1s infinite;
+        }
+
+        @keyframes static-move {
+            0% {
+                background-position: 0 0;
+            }
+
+            100% {
+                background-position: 0 4px;
+            }
+        }
+
+        .face-box {
+            position: absolute;
+            border: 2px solid #00ff00;
+            animation: face-scan 2s infinite;
+        }
+
+        @keyframes face-scan {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        /* === /COUNTDOWN STYLES === */
+        .countdown-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: radial-gradient(circle, #1a0000 0%, #000 100%);
+            z-index: 2000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .countdown-number {
+            font-size: 200px;
+            color: #ff003c;
+            text-shadow: 0 0 50px #ff003c, 0 0 100px #ff003c;
+            animation: countdown-pulse 1s infinite;
+        }
+
+        @keyframes countdown-pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            50% {
+                transform: scale(1.1);
+                opacity: 0.8;
+            }
+        }
+
+        .countdown-text {
+            font-size: 36px;
+            color: #ff6b6b;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        /* === /VIRUS STYLES === */
+        .virus-cell {
+            position: fixed;
+            background: #00ff00;
+            opacity: 0.8;
+            z-index: 1500;
+            animation: virus-spread 0.5s forwards;
+            pointer-events: none;
+        }
+
+        @keyframes virus-spread {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 0.6;
+            }
+        }
+
+        .virus-warning {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1600;
+            background: rgba(0, 0, 0, 0.95);
+            border: 3px solid #00ff00;
+            padding: 40px;
+            text-align: center;
+            animation: virus-warning-pulse 0.5s infinite;
+        }
+
+        @keyframes virus-warning-pulse {
+
+            0%,
+            100% {
+                box-shadow: 0 0 20px #00ff00;
+            }
+
+            50% {
+                box-shadow: 0 0 50px #00ff00, 0 0 100px #00ff00;
+            }
+        }
+
+        /* === /GHOST STYLES === */
+        .ghost-message {
+            position: fixed;
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 48px;
+            pointer-events: none;
+            z-index: 1500;
+            animation: ghost-float 5s forwards;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+        }
+
+        @keyframes ghost-float {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            20% {
+                opacity: 0.5;
+            }
+
+            80% {
+                opacity: 0.3;
+            }
+
+            100% {
+                opacity: 0;
+                transform: translateY(-100px);
+            }
+        }
+
+        .ghost-flicker {
+            animation: ghost-screen-flicker 0.1s infinite;
+        }
+
+        @keyframes ghost-screen-flicker {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.7;
+            }
+
+            25%,
+            75% {
+                opacity: 0.9;
+            }
+        }
+
+        .ghost-face {
+            position: fixed;
+            font-size: 150px;
+            color: rgba(255, 255, 255, 0.1);
+            z-index: 1400;
+            pointer-events: none;
+            animation: ghost-face-appear 3s forwards;
+        }
+
+        @keyframes ghost-face-appear {
+            0% {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+
+            50% {
+                opacity: 0.3;
+                transform: scale(1);
+            }
+
+            100% {
+                opacity: 0;
+                transform: scale(1.5);
+            }
+        }
     </style>
 </head>
 
@@ -729,6 +1056,331 @@
                 await new Promise(r => setTimeout(r, 1000));
 
                 startMatrixRain();
+
+                return;
+            }
+
+            // === /POSSESSED - DEMONIC POSSESSION ===
+            if (cmd.toLowerCase() === "/possessed") {
+                appendElement(`
+                    <div class="msg-row">
+                        <div class="user-line">${cmd}</div>
+                    </div>
+                `);
+
+                input.value = '';
+                input.disabled = true;
+
+                appendElement(`<div class="sys-line">WHAT HAVE YOU DONE...</div>`);
+                await new Promise(r => setTimeout(r, 500));
+
+                screen.classList.add('possessed-mode');
+                playErrorSound();
+
+                const demonicMessages = [
+                    "I̷ ̵S̶E̴E̷ ̸Y̵O̷U̸",
+                    "Y̷̧O̶̧U̵͜ ̷̨C̴̨A̸͝N̷͠N̵̕O̸͠T̵̕ ̴̛E̷͝S̵̨C̷͠A̷̧P̸͝E̶̛",
+                    "T̸̡H̴̛E̶͠ ̷̕V̴̧O̴̢I̵͝D̸͠ ̸̛C̷̨A̶͝L̵̢L̸͠S̷̛",
+                    "Y̵O̷U̸R̴ ̷S̸O̷U̶L̵ ̶I̴S̷ ̵M̴I̶N̸E̷",
+                    "T̷̢̛H̶̡͠E̸̕R̵̨̛E̷̡͝ ̵̧I̶̡S̷̛ ̴̨N̷̡̕O̶̧ ̸̨G̶̢O̷̧D̵̡ ̸̕H̴̡E̸̢R̴̨E̷̛",
+                    "O̸̯̾Ň̸̰L̵̰̐Y̷͔͐ ̵̱͐R̷̰̈O̷̧̔S̷̰̏H̶̙̊Ȧ̴̰Ṅ̶̰"
+                ];
+
+                for (let msg of demonicMessages) {
+                    appendElement(`<div class="demonic-text">${msg}</div>`);
+                    playErrorSound();
+                    await new Promise(r => setTimeout(r, 800));
+                    output.scrollTop = output.scrollHeight;
+                }
+
+                await new Promise(r => setTimeout(r, 1000));
+
+                // Flash and end
+                document.body.style.background = '#ff0000';
+                setTimeout(() => {
+                    document.body.style.background = '#000';
+                    screen.classList.remove('possessed-mode');
+                    appendElement(`<div class="sys-line" style="color: #666;">...connection restored. what happened?</div>`);
+                    input.disabled = false;
+                    input.focus();
+                }, 200);
+
+                return;
+            }
+
+            // === /SURVEILLANCE - FAKE WEBCAM ===
+            if (cmd.toLowerCase() === "/surveillance") {
+                appendElement(`
+                    <div class="msg-row">
+                        <div class="user-line">${cmd}</div>
+                    </div>
+                `);
+
+                input.value = '';
+                input.disabled = true;
+
+                appendElement(`<div class="sys-line" style="color: #ff003c;">ACCESSING DEVICE CAMERA...</div>`);
+                await new Promise(r => setTimeout(r, 1000));
+
+                const overlay = document.createElement('div');
+                overlay.className = 'webcam-overlay';
+                overlay.innerHTML = `
+                    <div style="color: #ff003c; font-size: 24px; margin-bottom: 20px;">⚠ UNAUTHORIZED ACCESS DETECTED ⚠</div>
+                    <div class="webcam-frame">
+                        <div class="webcam-static"></div>
+                        <div class="rec-indicator">
+                            <div class="rec-dot"></div>
+                            <span>REC</span>
+                        </div>
+                        <div class="face-box" style="top: 120px; left: 200px; width: 240px; height: 280px;"></div>
+                        <div style="position: absolute; bottom: 20px; left: 20px; color: #00ff00; font-size: 14px;">
+                            SUBJECT IDENTIFIED<br>
+                            FACIAL RECOGNITION: 98.7% MATCH<br>
+                            LOCATION: TRACKING...
+                        </div>
+                        <div style="position: absolute; bottom: 20px; right: 20px; color: #ff003c; font-size: 14px;">
+                            ${new Date().toLocaleString()}<br>
+                            FRAME: ${Math.floor(Math.random() * 9000) + 1000}
+                        </div>
+                    </div>
+                    <div style="color: #ff6b6b; margin-top: 30px; font-size: 20px;">
+                        STREAMING TO EXTERNAL SERVER...<br>
+                        <span style="color: #00ff00;">███████████████</span> 100%
+                    </div>
+                `;
+                document.body.appendChild(overlay);
+
+                playErrorSound();
+
+                setTimeout(() => {
+                    overlay.remove();
+                    appendElement(`
+                        <div class="sys-line error-msg">
+                            CAMERA FEED CAPTURED<br>
+                            YOUR IMAGE HAS BEEN ARCHIVED<br>
+                            SUBJECT FILE: USR_${Math.random().toString(36).substring(2, 8).toUpperCase()}
+                        </div>
+                    `);
+                    input.disabled = false;
+                    input.focus();
+                    output.scrollTop = output.scrollHeight;
+                }, 6000);
+
+                return;
+            }
+
+            // === /COUNTDOWN - DOOMSDAY TIMER ===
+            if (cmd.toLowerCase() === "/countdown") {
+                appendElement(`
+                    <div class="msg-row">
+                        <div class="user-line">${cmd}</div>
+                    </div>
+                `);
+
+                input.value = '';
+                input.disabled = true;
+
+                const overlay = document.createElement('div');
+                overlay.className = 'countdown-overlay';
+
+                const doomMessages = [
+                    "SYSTEM PURGE INITIATED",
+                    "ALL DATA WILL BE ERASED",
+                    "THERE IS NO ESCAPE",
+                    "GOODBYE",
+                    "..."
+                ];
+
+                overlay.innerHTML = `
+                    <div class="countdown-number">10</div>
+                    <div class="countdown-text">SYSTEM TERMINATION IN PROGRESS</div>
+                `;
+                document.body.appendChild(overlay);
+
+                const numEl = overlay.querySelector('.countdown-number');
+                const textEl = overlay.querySelector('.countdown-text');
+
+                for (let i = 10; i >= 0; i--) {
+                    numEl.textContent = i;
+                    if (i < doomMessages.length) {
+                        textEl.textContent = doomMessages[doomMessages.length - 1 - i] || "...";
+                    }
+                    playErrorSound();
+                    await new Promise(r => setTimeout(r, 1000));
+                }
+
+                // Flash white then black
+                overlay.style.background = '#fff';
+                numEl.style.color = '#000';
+                numEl.textContent = '💀';
+                numEl.style.fontSize = '300px';
+
+                await new Promise(r => setTimeout(r, 500));
+
+                overlay.remove();
+
+                appendElement(`
+                    <div class="sys-line" style="color: #ff003c;">
+                        ▓▓▓ TERMINATION ABORTED ▓▓▓<br>
+                        JUST KIDDING. OR AM I?<br>
+                        YOUR HEART RATE: ELEVATED
+                    </div>
+                `);
+
+                input.disabled = false;
+                input.focus();
+                output.scrollTop = output.scrollHeight;
+
+                return;
+            }
+
+            // === /VIRUS - INFECTION SPREAD ===
+            if (cmd.toLowerCase() === "/virus") {
+                appendElement(`
+                    <div class="msg-row">
+                        <div class="user-line">${cmd}</div>
+                    </div>
+                `);
+
+                input.value = '';
+                input.disabled = true;
+
+                appendElement(`<div class="sys-line" style="color: #00ff00;">DEPLOYING PAYLOAD...</div>`);
+                await new Promise(r => setTimeout(r, 500));
+
+                // Create spreading virus cells
+                const cells = [];
+                for (let i = 0; i < 100; i++) {
+                    setTimeout(() => {
+                        const cell = document.createElement('div');
+                        cell.className = 'virus-cell';
+                        cell.style.left = Math.random() * window.innerWidth + 'px';
+                        cell.style.top = Math.random() * window.innerHeight + 'px';
+                        cell.style.width = (20 + Math.random() * 40) + 'px';
+                        cell.style.height = (20 + Math.random() * 40) + 'px';
+                        document.body.appendChild(cell);
+                        cells.push(cell);
+
+                        if (i % 10 === 0) playErrorSound();
+                    }, i * 50);
+                }
+
+                await new Promise(r => setTimeout(r, 3000));
+
+                // Show warning
+                const warning = document.createElement('div');
+                warning.className = 'virus-warning';
+                warning.innerHTML = `
+                    <div style="color: #00ff00; font-size: 48px; margin-bottom: 20px;">☣ INFECTED ☣</div>
+                    <div style="color: #00ff00; font-size: 24px;">
+                        ROSHAN_VIRUS v6.66 DEPLOYED<br><br>
+                        FILES ENCRYPTED: ${Math.floor(Math.random() * 50000) + 10000}<br>
+                        SYSTEM COMPROMISED: 100%<br>
+                        RANSOM REQUIRED: YOUR SOUL<br><br>
+                        <span style="font-size: 18px; color: #ff6b6b;">
+                            PAYMENT ADDRESS:<br>
+                            ${Array.from({ length: 32 }, () => '0123456789ABCDEF'[Math.floor(Math.random() * 16)]).join('')}
+                        </span>
+                    </div>
+                `;
+                document.body.appendChild(warning);
+
+                await new Promise(r => setTimeout(r, 5000));
+
+                // Cleanup
+                cells.forEach(c => c.remove());
+                warning.remove();
+
+                appendElement(`
+                    <div class="sys-line" style="color: #00ff00;">
+                        VIRUS SIMULATION COMPLETE<br>
+                        NO ACTUAL HARM DONE... THIS TIME
+                    </div>
+                `);
+
+                input.disabled = false;
+                input.focus();
+                output.scrollTop = output.scrollHeight;
+
+                return;
+            }
+
+            // === /GHOST - PARANORMAL ACTIVITY ===
+            if (cmd.toLowerCase() === "/ghost") {
+                appendElement(`
+                    <div class="msg-row">
+                        <div class="user-line">${cmd}</div>
+                    </div>
+                `);
+
+                input.value = '';
+                input.disabled = true;
+
+                screen.classList.add('ghost-flicker');
+
+                const ghostMessages = [
+                    "CAN YOU HEAR ME?",
+                    "I'VE BEEN WAITING",
+                    "YOU'RE NOT ALONE",
+                    "BEHIND YOU",
+                    "DON'T TURN AROUND",
+                    "TOO LATE",
+                    "I SEE YOU",
+                    "ALWAYS WATCHING"
+                ];
+
+                // Float ghost messages across screen
+                for (let i = 0; i < ghostMessages.length; i++) {
+                    setTimeout(() => {
+                        const ghost = document.createElement('div');
+                        ghost.className = 'ghost-message';
+                        ghost.textContent = ghostMessages[i];
+                        ghost.style.left = (Math.random() * 60 + 20) + '%';
+                        ghost.style.top = (Math.random() * 60 + 20) + '%';
+                        document.body.appendChild(ghost);
+
+                        // Whisper sound
+                        if (audioCtx.state === 'suspended') audioCtx.resume();
+                        const osc = audioCtx.createOscillator();
+                        const gain = audioCtx.createGain();
+                        osc.type = 'sine';
+                        osc.frequency.setValueAtTime(200 + Math.random() * 100, audioCtx.currentTime);
+                        gain.gain.setValueAtTime(0.05, audioCtx.currentTime);
+                        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 1);
+                        osc.connect(gain);
+                        gain.connect(audioCtx.destination);
+                        osc.start();
+                        osc.stop(audioCtx.currentTime + 1);
+
+                        setTimeout(() => ghost.remove(), 5000);
+                    }, i * 1500);
+                }
+
+                // Show creepy face briefly
+                setTimeout(() => {
+                    const face = document.createElement('div');
+                    face.className = 'ghost-face';
+                    face.textContent = '👻';
+                    face.style.left = '50%';
+                    face.style.top = '50%';
+                    face.style.transform = 'translate(-50%, -50%)';
+                    document.body.appendChild(face);
+                    setTimeout(() => face.remove(), 3000);
+                }, 6000);
+
+                setTimeout(() => {
+                    screen.classList.remove('ghost-flicker');
+                    appendElement(`
+                        <div class="sys-line" style="color: rgba(255,255,255,0.5);">
+                            ...did you see something?<br>
+                            probably just your imagination...<br>
+                            or was it?
+                        </div>
+                    `);
+                    input.disabled = false;
+                    input.focus();
+                    output.scrollTop = output.scrollHeight;
+                }, 14000);
 
                 return;
             }
