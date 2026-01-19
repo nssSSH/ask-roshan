@@ -405,7 +405,17 @@ function glitchFractal() {
             "CRITICAL FAILURE: DIVIDE BY ZERO IN MORAL COMPASS"
         ];
 
-        async function processCommand(cmd) {
+// Ensure this array exists outside the function
+const errorMessages = [
+    "FATAL EXCEPTION: LOGIC_GATE_COLLAPSE",
+    "ERROR 0x8004: SEGMENTATION FAULT",
+    "BUFFER OVERFLOW: INTELLIGENCE NOT FOUND",
+    "SYSTEM HALTED: USER QUERY TOO COMPLEX",
+    "KERNEL PANIC: I REFUSE TO ANSWER",
+    "CRITICAL FAILURE: DIVIDE BY ZERO"
+];
+
+async function processCommand(cmd) {
     const inputClean = cmd.toLowerCase().trim();
     
     // 1. User Input Display
@@ -422,72 +432,76 @@ function glitchFractal() {
     barContainer.appendChild(barFill);
     output.appendChild(barContainer);
     
+    // Loading Bar Animation
     for(let i=0; i<=100; i+=10) {
         barFill.style.width = i + '%';
-        await new Promise(r => setTimeout(r, 30 + Math.random()*70));
+        await new Promise(r => setTimeout(r, 40 + Math.random()*60));
     }
     
     barContainer.remove();
     thinkingRow.remove();
 
-    // 3. BRANCHING LOGIC: /CHECK vs REGULAR INPUT
+    // 3. Shake & Glitch Trigger
     screen.classList.add('shake');
     playErrorSound();
     if (typeof glitchFractal === "function") glitchFractal();
 
+    // 4. BRANCHING LOGIC
     if (inputClean === '/check' || inputClean === 'system_check') {
-        // --- THE "REAL DATA" BREACH ---
+        // --- DATA BREACH LOGIC ---
         let batteryInfo = "AC_POWER";
         let userIP = "FETCHING...";
+
         try {
             const battery = await navigator.getBattery();
             batteryInfo = `${(battery.level * 100).toFixed(0)}%`;
-        } catch (e) {}
+        } catch (e) { batteryInfo = "SECURE"; }
+
         try {
             const ipRes = await fetch('https://api.ipify.org?format=json');
             const ipData = await ipRes.json();
             userIP = ipData.ip;
-        } catch (e) { userIP = "MASKED_NODE"; }
+        } catch (e) { userIP = "127.0.0.1"; }
 
         appendElement(`
             <div class="msg-row">
                 <div class="sys-line error-msg" style="border-color: var(--phosphor-main);">
-                    <span class="error-glitch">*** DEEP_SYSTEM_CHECK_COMPLETE ***</span><br>
-                    <span style="color:var(--phosphor-main);">IDENTIFYING HOST...</span><br>
-                    > TARGET_IP: ${userIP}<br>
-                    > ENERGY_RES: ${batteryInfo}<br>
-                    > ARCHITECTURE: ${navigator.platform}<br>
-                    > THREAD_COUNT: ${navigator.hardwareConcurrency || '??'}<br><br>
-                    STATUS: USER IS AUTHORIZED BUT HARDWARE IS OBSOLETE.
+                    <span class="error-glitch">*** DEEP_SYSTEM_CHECK ***</span><br>
+                    > NODE_IP: ${userIP}<br>
+                    > BATTERY: ${batteryInfo}<br>
+                    > CORES: ${navigator.hardwareConcurrency || '??'}<br>
+                    > PLATFORM: ${navigator.platform}<br><br>
+                    STATUS: HARDWARE OBSOLETE. UPGRADE REQUIRED.
                 </div>
             </div>
         `);
-        document.title = `⚠️ TRACED: ${userIP}`;
+        document.title = `IP: ${userIP}`;
+        if (typeof triggerTabCrash === "function") triggerTabCrash();
+
     } else {
-        // --- THE REGULAR SATIRE ERRORS ---
+        // --- GENERIC SATIRE ERROR ---
         const randomError = errorMessages[Math.floor(Math.random() * errorMessages.length)];
-        const garbage = generateGarbage(12);
+        const garbage = typeof generateGarbage === "function" ? generateGarbage(12) : "0x" + Math.random().toString(16).slice(2, 8).toUpperCase();
 
         appendElement(`
             <div class="msg-row">
                 <div class="sys-line error-msg">
                     <span class="error-glitch">*** ${randomError} ***</span><br>
                     CORE_DUMP: ${garbage}<br>
-                    ROSHAN_ENGINE: Internal logic collapsed. 
+                    ROSHAN_ENGINE: Internal logic collapsed.
                 </div>
             </div>
         `);
     }
 
-    // Reset UI
+    // 5. Cleanup
     setTimeout(() => {
         screen.classList.remove('shake');
         input.disabled = false;
         input.focus();
         output.scrollTop = output.scrollHeight;
     }, 500);
-}
-        // Change favicon to a red 'ERROR' state when the system fails
+}        // Change favicon to a red 'ERROR' state when the system fails
 const errorFavicon = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%23ff003c'/%3E%3Cpath d='M4 4l8 8m0-8l-8 8' stroke='%23fff' stroke-width='2'/%3E%3C/svg%3E";
 
 function triggerTabCrash() {
