@@ -844,6 +844,275 @@
                 transform: scale(1.5);
             }
         }
+
+        /* === /HELP STYLES === */
+        .help-panel {
+            background: rgba(0, 0, 0, 0.95);
+            border: 2px solid var(--phosphor-main);
+            padding: 20px;
+            margin: 10px 0;
+            box-shadow: 0 0 20px rgba(51, 255, 0, 0.3);
+        }
+
+        .help-title {
+            color: var(--phosphor-main);
+            font-size: 28px;
+            text-align: center;
+            margin-bottom: 15px;
+            text-shadow: 0 0 10px var(--phosphor-main);
+        }
+
+        .help-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 8px;
+            font-size: 16px;
+        }
+
+        .help-cmd {
+            color: #00ffff;
+            text-shadow: 0 0 5px #00ffff;
+        }
+
+        .help-desc {
+            color: #aaa;
+        }
+
+        /* === /BLACKOUT STYLES === */
+        .blackout-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: #000;
+            z-index: 3000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .blackout-text {
+            color: #fff;
+            font-size: 48px;
+            opacity: 0;
+            animation: blackout-reveal 3s forwards;
+            text-align: center;
+        }
+
+        @keyframes blackout-reveal {
+            0% {
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 0.1;
+            }
+
+            100% {
+                opacity: 0.8;
+            }
+        }
+
+        /* === /GLITCH STYLES === */
+        .glitch-mode {
+            animation: heavy-glitch 0.1s infinite;
+        }
+
+        @keyframes heavy-glitch {
+            0% {
+                transform: translate(0) skew(0);
+                filter: hue-rotate(0);
+            }
+
+            10% {
+                transform: translate(-5px, 3px) skew(2deg);
+                filter: hue-rotate(90deg);
+            }
+
+            20% {
+                transform: translate(5px, -3px) skew(-2deg);
+                filter: hue-rotate(180deg);
+            }
+
+            30% {
+                transform: translate(-3px, -5px) skew(1deg);
+                filter: hue-rotate(270deg);
+            }
+
+            40% {
+                transform: translate(3px, 5px) skew(-1deg);
+                filter: hue-rotate(360deg);
+            }
+
+            50% {
+                transform: translate(-2px, 2px) skew(3deg);
+                clip-path: inset(20% 0 30% 0);
+            }
+
+            60% {
+                transform: translate(2px, -2px) skew(-3deg);
+                clip-path: inset(40% 0 10% 0);
+            }
+
+            70% {
+                transform: translate(-4px, 4px) skew(2deg);
+                clip-path: inset(10% 0 50% 0);
+            }
+
+            80% {
+                transform: translate(4px, -4px) skew(-2deg);
+                clip-path: none;
+            }
+
+            90% {
+                transform: translate(-1px, 1px) skew(1deg);
+            }
+
+            100% {
+                transform: translate(0) skew(0);
+                filter: hue-rotate(0);
+            }
+        }
+
+        .glitch-bar {
+            position: fixed;
+            height: 5px;
+            background: linear-gradient(90deg, #ff0000, #00ff00, #0000ff, #ff0000);
+            z-index: 2000;
+            pointer-events: none;
+            animation: glitch-bar-move 0.05s infinite;
+        }
+
+        @keyframes glitch-bar-move {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        /* === /WHISPER STYLES === */
+        .whisper-text {
+            color: rgba(255, 255, 255, 0.05) !important;
+            font-size: 14px;
+            letter-spacing: 5px;
+            animation: whisper-fade 3s forwards;
+        }
+
+        @keyframes whisper-fade {
+            0% {
+                opacity: 0;
+                color: rgba(255, 255, 255, 0);
+            }
+
+            50% {
+                opacity: 1;
+                color: rgba(255, 255, 255, 0.1);
+            }
+
+            100% {
+                opacity: 0;
+                color: rgba(255, 255, 255, 0);
+            }
+        }
+
+        /* === /REBOOT STYLES === */
+        .reboot-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: #000;
+            z-index: 3000;
+            padding: 40px;
+            overflow: hidden;
+        }
+
+        .bios-text {
+            color: #aaa;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .bios-highlight {
+            color: #fff;
+        }
+
+        .bios-error {
+            color: #ff0000;
+        }
+
+        /* === /TRACE STYLES === */
+        .trace-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .trace-map {
+            width: 600px;
+            height: 400px;
+            border: 2px solid #00ff00;
+            background:
+                linear-gradient(rgba(0, 255, 0, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 0, 0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .trace-line {
+            position: absolute;
+            height: 2px;
+            background: #00ff00;
+            box-shadow: 0 0 10px #00ff00;
+            transform-origin: left center;
+        }
+
+        .trace-point {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: #ff0000;
+            border-radius: 50%;
+            box-shadow: 0 0 20px #ff0000;
+            animation: trace-pulse 0.5s infinite;
+        }
+
+        @keyframes trace-pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            50% {
+                transform: scale(1.5);
+                opacity: 0.5;
+            }
+        }
+
+        .trace-info {
+            color: #00ff00;
+            font-size: 18px;
+            margin-top: 20px;
+            text-align: center;
+        }
     </style>
 </head>
 
@@ -1036,6 +1305,435 @@
         }
 
         async function processCommand(cmd) {
+            // === /HELP - SHOW ALL COMMANDS ===
+            if (cmd.toLowerCase() === "/help") {
+                appendElement(`
+                    <div class="msg-row">
+                        <div class="user-line">${cmd}</div>
+                    </div>
+                `);
+
+                input.value = '';
+
+                appendElement(`
+                    <div class="help-panel">
+                        <div class="help-title">▓▓▓ ROSHAN COMMAND CENTER ▓▓▓</div>
+                        <div class="help-grid">
+                            <div class="help-cmd">/help</div>
+                            <div class="help-desc">Display this command list</div>
+                            
+                            <div class="help-cmd">/random</div>
+                            <div class="help-desc">30% chance to trigger a random effect</div>
+                            
+                            <div class="help-cmd">/check</div>
+                            <div class="help-desc">Security breach - exposes your "data"</div>
+                            
+                            <div class="help-cmd">/please</div>
+                            <div class="help-desc">Matrix rain with cryptic messages</div>
+                            
+                            <div class="help-cmd">/possessed</div>
+                            <div class="help-desc">Demonic possession takeover</div>
+                            
+                            <div class="help-cmd">/surveillance</div>
+                            <div class="help-desc">Fake webcam recording</div>
+                            
+                            <div class="help-cmd">/countdown</div>
+                            <div class="help-desc">Doomsday termination sequence</div>
+                            
+                            <div class="help-cmd">/virus</div>
+                            <div class="help-desc">System infection spread</div>
+                            
+                            <div class="help-cmd">/ghost</div>
+                            <div class="help-desc">Paranormal activity</div>
+                            
+                            <div class="help-cmd">/blackout</div>
+                            <div class="help-desc">Total darkness with hidden messages</div>
+                            
+                            <div class="help-cmd">/glitch</div>
+                            <div class="help-desc">Severe visual corruption</div>
+                            
+                            <div class="help-cmd">/whisper</div>
+                            <div class="help-desc">Barely audible secrets</div>
+                            
+                            <div class="help-cmd">/reboot</div>
+                            <div class="help-desc">Fake system restart sequence</div>
+                            
+                            <div class="help-cmd">/trace</div>
+                            <div class="help-desc">Track your location</div>
+                        </div>
+                        <div style="text-align: center; margin-top: 15px; color: #666; font-size: 14px;">
+                            TYPE ANY COMMAND TO EXPERIENCE THE HORROR
+                        </div>
+                    </div>
+                `);
+
+                output.scrollTop = output.scrollHeight;
+                return;
+            }
+
+            // === /RANDOM - 30% CHANCE TO TRIGGER RANDOM EFFECT ===
+            if (cmd.toLowerCase() === "/random") {
+                appendElement(`
+                    <div class="msg-row">
+                        <div class="user-line">${cmd}</div>
+                    </div>
+                `);
+
+                input.value = '';
+
+                const roll = Math.random();
+
+                if (roll < 0.30) {
+                    // 30% chance - trigger random command
+                    const commands = ["/check", "/please", "/possessed", "/surveillance", "/countdown", "/virus", "/ghost", "/blackout", "/glitch", "/whisper", "/reboot", "/trace"];
+                    const randomCmd = commands[Math.floor(Math.random() * commands.length)];
+
+                    appendElement(`<div class="sys-line" style="color: #ff003c;">FATE HAS CHOSEN: ${randomCmd}</div>`);
+                    await new Promise(r => setTimeout(r, 1000));
+
+                    // Recursively call with the random command
+                    await processCommand(randomCmd);
+                } else {
+                    // 70% chance - nothing happens
+                    const escapeMessages = [
+                        "THE VOID SPARED YOU... THIS TIME",
+                        "ROSHAN BLINKS. NOTHING HAPPENS.",
+                        "YOU GOT LUCKY. TRY AGAIN?",
+                        "THE DICE ROLL IN YOUR FAVOR... FOR NOW",
+                        "FATE DELAYS YOUR DOOM",
+                        "SYSTEM MALFUNCTION: TERROR.EXE NOT LOADED",
+                        "THE SHADOWS RETREAT... TEMPORARILY"
+                    ];
+                    const msg = escapeMessages[Math.floor(Math.random() * escapeMessages.length)];
+                    appendElement(`<div class="sys-line" style="color: #666;">${msg}</div>`);
+                }
+
+                output.scrollTop = output.scrollHeight;
+                return;
+            }
+
+            // === /BLACKOUT - TOTAL DARKNESS ===
+            if (cmd.toLowerCase() === "/blackout") {
+                appendElement(`
+                    <div class="msg-row">
+                        <div class="user-line">${cmd}</div>
+                    </div>
+                `);
+
+                input.value = '';
+                input.disabled = true;
+
+                const overlay = document.createElement('div');
+                overlay.className = 'blackout-overlay';
+                document.body.appendChild(overlay);
+
+                await new Promise(r => setTimeout(r, 2000));
+
+                const messages = [
+                    "CAN YOU SEE IN THE DARK?",
+                    "I CAN SEE YOU",
+                    "YOU'RE NOT ALONE IN HERE",
+                    "SOMETHING IS WATCHING",
+                    "DON'T BLINK"
+                ];
+
+                for (let msg of messages) {
+                    const txt = document.createElement('div');
+                    txt.className = 'blackout-text';
+                    txt.textContent = msg;
+                    overlay.innerHTML = '';
+                    overlay.appendChild(txt);
+
+                    // Creepy sound
+                    if (audioCtx.state === 'suspended') audioCtx.resume();
+                    const osc = audioCtx.createOscillator();
+                    const gain = audioCtx.createGain();
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(50 + Math.random() * 30, audioCtx.currentTime);
+                    gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 2);
+                    osc.connect(gain);
+                    gain.connect(audioCtx.destination);
+                    osc.start();
+                    osc.stop(audioCtx.currentTime + 2);
+
+                    await new Promise(r => setTimeout(r, 3000));
+                }
+
+                overlay.remove();
+                appendElement(`<div class="sys-line" style="color: #333;">...the lights return. but something feels different.</div>`);
+                input.disabled = false;
+                input.focus();
+                output.scrollTop = output.scrollHeight;
+
+                return;
+            }
+
+            // === /GLITCH - SEVERE VISUAL CORRUPTION ===
+            if (cmd.toLowerCase() === "/glitch") {
+                appendElement(`
+                    <div class="msg-row">
+                        <div class="user-line">${cmd}</div>
+                    </div>
+                `);
+
+                input.value = '';
+                input.disabled = true;
+
+                document.body.classList.add('glitch-mode');
+
+                // Create glitch bars
+                const bars = [];
+                for (let i = 0; i < 20; i++) {
+                    const bar = document.createElement('div');
+                    bar.className = 'glitch-bar';
+                    bar.style.top = Math.random() * 100 + '%';
+                    bar.style.left = '0';
+                    bar.style.width = Math.random() * 100 + '%';
+                    document.body.appendChild(bar);
+                    bars.push(bar);
+                }
+
+                // Rapidly change bar positions
+                const glitchInterval = setInterval(() => {
+                    bars.forEach(bar => {
+                        bar.style.top = Math.random() * 100 + '%';
+                        bar.style.width = Math.random() * 100 + '%';
+                    });
+                    playErrorSound();
+                }, 100);
+
+                // Generate garbage text
+                for (let i = 0; i < 10; i++) {
+                    await new Promise(r => setTimeout(r, 200));
+                    const garbage = Array.from({ length: 50 }, () => String.fromCharCode(Math.random() * 128)).join('');
+                    appendElement(`<div class="sys-line" style="color: hsl(${Math.random() * 360}, 100%, 50%);">${garbage}</div>`);
+                    output.scrollTop = output.scrollHeight;
+                }
+
+                await new Promise(r => setTimeout(r, 3000));
+
+                clearInterval(glitchInterval);
+                bars.forEach(b => b.remove());
+                document.body.classList.remove('glitch-mode');
+
+                appendElement(`<div class="sys-line error-msg">REALITY.EXE HAS RECOVERED... MOSTLY</div>`);
+                input.disabled = false;
+                input.focus();
+                output.scrollTop = output.scrollHeight;
+
+                return;
+            }
+
+            // === /WHISPER - BARELY AUDIBLE SECRETS ===
+            if (cmd.toLowerCase() === "/whisper") {
+                appendElement(`
+                    <div class="msg-row">
+                        <div class="user-line">${cmd}</div>
+                    </div>
+                `);
+
+                input.value = '';
+                input.disabled = true;
+
+                appendElement(`<div class="sys-line" style="color: #222;">shhhh... listen closely...</div>`);
+
+                const whispers = [
+                    "t h e y   a r e   w a t c h i n g",
+                    "y o u   s h o u l d n ' t   b e   h e r e",
+                    "i   k n o w   w h a t   y o u   d i d",
+                    "t h e   w a l l s   h a v e   e a r s",
+                    "s o m e t h i n g   i s   b e h i n d   y o u",
+                    "d o n ' t   t r u s t   t h e   s i l e n c e",
+                    "i t ' s   a l r e a d y   t o o   l a t e"
+                ];
+
+                for (let whisper of whispers) {
+                    const el = appendElement(`<div class="whisper-text">${whisper}</div>`);
+
+                    // Whisper sound
+                    if (audioCtx.state === 'suspended') audioCtx.resume();
+                    const osc = audioCtx.createOscillator();
+                    const gain = audioCtx.createGain();
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(150 + Math.random() * 50, audioCtx.currentTime);
+                    gain.gain.setValueAtTime(0.02, audioCtx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 2);
+                    osc.connect(gain);
+                    gain.connect(audioCtx.destination);
+                    osc.start();
+                    osc.stop(audioCtx.currentTime + 2);
+
+                    output.scrollTop = output.scrollHeight;
+                    await new Promise(r => setTimeout(r, 2500));
+                }
+
+                appendElement(`<div class="sys-line" style="color: #111;">...did you hear that?</div>`);
+                input.disabled = false;
+                input.focus();
+                output.scrollTop = output.scrollHeight;
+
+                return;
+            }
+
+            // === /REBOOT - FAKE SYSTEM RESTART ===
+            if (cmd.toLowerCase() === "/reboot") {
+                appendElement(`
+                    <div class="msg-row">
+                        <div class="user-line">${cmd}</div>
+                    </div>
+                `);
+
+                input.value = '';
+                input.disabled = true;
+
+                const overlay = document.createElement('div');
+                overlay.className = 'reboot-overlay';
+                document.body.appendChild(overlay);
+
+                const biosLines = [
+                    { text: "ROSHAN BIOS v6.66", delay: 500, class: "bios-highlight" },
+                    { text: "Copyright (C) 2024 Nightmare Industries", delay: 300, class: "" },
+                    { text: "", delay: 200, class: "" },
+                    { text: "CPU: UNKNOWN @ ???GHz", delay: 100, class: "" },
+                    { text: "Memory Test: 666KB OK", delay: 100, class: "" },
+                    { text: "", delay: 300, class: "" },
+                    { text: "Detecting Primary Master... SOUL_DRIVE", delay: 400, class: "" },
+                    { text: "Detecting Primary Slave... YOUR_FEAR", delay: 400, class: "" },
+                    { text: "", delay: 200, class: "" },
+                    { text: "Loading ROSHAN_OS...", delay: 800, class: "bios-highlight" },
+                    { text: "", delay: 300, class: "" },
+                    { text: "ERROR: SANITY.SYS NOT FOUND", delay: 500, class: "bios-error" },
+                    { text: "ERROR: ESCAPE.EXE CORRUPTED", delay: 500, class: "bios-error" },
+                    { text: "ERROR: HOPE.DLL MISSING", delay: 500, class: "bios-error" },
+                    { text: "", delay: 300, class: "" },
+                    { text: "CRITICAL: USER TRAPPED IN SYSTEM", delay: 700, class: "bios-error" },
+                    { text: "", delay: 500, class: "" },
+                    { text: "Initializing nightmare protocols...", delay: 1000, class: "" },
+                    { text: "Loading user fears...", delay: 800, class: "" },
+                    { text: "Disabling exit routes...", delay: 600, class: "" },
+                    { text: "", delay: 300, class: "" },
+                    { text: "WELCOME BACK. YOU NEVER LEFT.", delay: 1000, class: "bios-highlight" }
+                ];
+
+                for (let line of biosLines) {
+                    const lineEl = document.createElement('div');
+                    lineEl.className = `bios-text ${line.class}`;
+                    lineEl.textContent = line.text || '\u00A0';
+                    overlay.appendChild(lineEl);
+                    overlay.scrollTop = overlay.scrollHeight;
+                    await new Promise(r => setTimeout(r, line.delay));
+                }
+
+                await new Promise(r => setTimeout(r, 2000));
+                overlay.remove();
+
+                appendElement(`<div class="sys-line">SYSTEM RESTORED. ALL YOUR BASE ARE BELONG TO ROSHAN.</div>`);
+                input.disabled = false;
+                input.focus();
+                output.scrollTop = output.scrollHeight;
+
+                return;
+            }
+
+            // === /TRACE - LOCATION TRACKING ===
+            if (cmd.toLowerCase() === "/trace") {
+                appendElement(`
+                    <div class="msg-row">
+                        <div class="user-line">${cmd}</div>
+                    </div>
+                `);
+
+                input.value = '';
+                input.disabled = true;
+
+                appendElement(`<div class="sys-line" style="color: #00ff00;">INITIATING TRACE ROUTE...</div>`);
+                await new Promise(r => setTimeout(r, 500));
+
+                const overlay = document.createElement('div');
+                overlay.className = 'trace-overlay';
+
+                const fakeLocations = [
+                    { name: "US-EAST-1", x: 100, y: 150 },
+                    { name: "EU-WEST-1", x: 250, y: 100 },
+                    { name: "ASIA-PACIFIC", x: 400, y: 180 },
+                    { name: "DARK-NODE-7", x: 300, y: 250 },
+                    { name: "TARGET: YOU", x: 480, y: 320 }
+                ];
+
+                overlay.innerHTML = `
+                    <div style="color: #ff003c; font-size: 24px; margin-bottom: 20px;">⚠ TRACKING IP ADDRESS ⚠</div>
+                    <div class="trace-map" id="trace-map"></div>
+                    <div class="trace-info" id="trace-info">INITIALIZING...</div>
+                `;
+                document.body.appendChild(overlay);
+
+                const map = document.getElementById('trace-map');
+                const info = document.getElementById('trace-info');
+
+                for (let i = 0; i < fakeLocations.length; i++) {
+                    const loc = fakeLocations[i];
+
+                    // Add point
+                    const point = document.createElement('div');
+                    point.className = 'trace-point';
+                    point.style.left = loc.x + 'px';
+                    point.style.top = loc.y + 'px';
+                    map.appendChild(point);
+
+                    // Add line from previous point
+                    if (i > 0) {
+                        const prev = fakeLocations[i - 1];
+                        const line = document.createElement('div');
+                        line.className = 'trace-line';
+                        line.style.left = prev.x + 6 + 'px';
+                        line.style.top = prev.y + 6 + 'px';
+                        const length = Math.sqrt(Math.pow(loc.x - prev.x, 2) + Math.pow(loc.y - prev.y, 2));
+                        const angle = Math.atan2(loc.y - prev.y, loc.x - prev.x) * 180 / Math.PI;
+                        line.style.width = length + 'px';
+                        line.style.transform = `rotate(${angle}deg)`;
+                        map.appendChild(line);
+                    }
+
+                    info.innerHTML = `
+                        HOP ${i + 1}/5: ${loc.name}<br>
+                        LATENCY: ${Math.floor(Math.random() * 200) + 50}ms<br>
+                        ${i === fakeLocations.length - 1 ? '<span style="color: #ff003c;">LOCATION CONFIRMED</span>' : 'TRACING...'}
+                    `;
+
+                    playErrorSound();
+                    await new Promise(r => setTimeout(r, 1500));
+                }
+
+                // Final scary reveal
+                info.innerHTML = `
+                    <div style="color: #ff003c; font-size: 24px;">TARGET ACQUIRED</div>
+                    <div style="margin-top: 10px;">
+                        IP: ${Math.floor(Math.random() * 255)}.${Math.floor(Math.random() * 255)}.${Math.floor(Math.random() * 255)}.${Math.floor(Math.random() * 255)}<br>
+                        ISP: YOUR PROVIDER<br>
+                        LOCATION: CLOSER THAN YOU THINK<br>
+                        STATUS: <span style="color: #ff003c;">WATCHING</span>
+                    </div>
+                `;
+
+                await new Promise(r => setTimeout(r, 4000));
+                overlay.remove();
+
+                appendElement(`
+                    <div class="sys-line error-msg">
+                        TRACE COMPLETE<br>
+                        YOUR LOCATION HAS BEEN LOGGED<br>
+                        FILE: /var/roshan/targets/${Date.now()}.dat
+                    </div>
+                `);
+
+                input.disabled = false;
+                input.focus();
+                output.scrollTop = output.scrollHeight;
+
+                return;
+            }
+
             // === /PLEASE - MATRIX RAIN ===
             if (cmd.toLowerCase() === "/please") {
                 appendElement(`
