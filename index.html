@@ -406,31 +406,15 @@ function glitchFractal() {
         ];
 
         async function processCommand(cmd) {
+    const inputClean = cmd.toLowerCase().trim();
+    
     // 1. User Input Display
     appendElement(`<div class="msg-row"><div class="user-line">${cmd}</div></div>`);
     input.value = '';
     input.disabled = true;
 
-    // 2. SCRAPE REAL DATA (The "Breach" Logic)
-    let batteryInfo = "AC_POWER";
-    let userIP = "FETCHING...";
-    let cores = navigator.hardwareConcurrency || "UNK";
-    let platform = navigator.platform;
-
-    try {
-        const battery = await navigator.getBattery();
-        batteryInfo = `${(battery.level * 100).toFixed(0)}%`;
-    } catch (e) {}
-
-    try {
-        const ipRes = await fetch('https://api.ipify.org?format=json');
-        const ipData = await ipRes.json();
-        userIP = ipData.ip;
-    } catch (e) { userIP = "ERR_MASKED"; }
-
-    // 3. Fake "Thinking" sequence + Loading Bar
-    const thinkingRow = appendElement(`<div class="sys-line">INTERCEPTING PACKETS FROM ${userIP}...</div>`);
-    
+    // 2. Fake "Thinking" sequence
+    const thinkingRow = appendElement(`<div class="sys-line">ANALYZING REQUEST...</div>`);
     const barContainer = document.createElement('div');
     barContainer.className = 'loading-bar';
     const barFill = document.createElement('div');
@@ -438,59 +422,70 @@ function glitchFractal() {
     barContainer.appendChild(barFill);
     output.appendChild(barContainer);
     
-    // Animate bar using your original timing logic
     for(let i=0; i<=100; i+=10) {
         barFill.style.width = i + '%';
-        await new Promise(r => setTimeout(r, 40 + Math.random()*80));
+        await new Promise(r => setTimeout(r, 30 + Math.random()*70));
     }
     
     barContainer.remove();
     thinkingRow.remove();
 
-    // 4. THE PAYLOAD (Visual Chaos + Real Data)
+    // 3. BRANCHING LOGIC: /CHECK vs REGULAR INPUT
     screen.classList.add('shake');
     playErrorSound();
-    
-    // Trigger the fractal glitch and tab crash from our previous steps
     if (typeof glitchFractal === "function") glitchFractal();
-    if (typeof triggerTabCrash === "function") triggerTabCrash();
 
-    const randomError = errorMessages[Math.floor(Math.random() * errorMessages.length)];
-    const garbage = generateGarbage(15);
+    if (inputClean === '/check' || inputClean === 'system_check') {
+        // --- THE "REAL DATA" BREACH ---
+        let batteryInfo = "AC_POWER";
+        let userIP = "FETCHING...";
+        try {
+            const battery = await navigator.getBattery();
+            batteryInfo = `${(battery.level * 100).toFixed(0)}%`;
+        } catch (e) {}
+        try {
+            const ipRes = await fetch('https://api.ipify.org?format=json');
+            const ipData = await ipRes.json();
+            userIP = ipData.ip;
+        } catch (e) { userIP = "MASKED_NODE"; }
 
-    appendElement(`
-        <div class="msg-row">
-            <div class="sys-line error-msg">
-                <span class="error-glitch">*** ${randomError} ***</span><br>
-                <span style="color:var(--phosphor-main); font-size: 0.8em;">
-                    Dumping local environment to console...
-                </span><br>
-                > NODE_IP: ${userIP}<br>
-                > PWR_LVL: ${batteryInfo}<br>
-                > CPU_THR: ${cores}<br>
-                > OS_KERN: ${platform}<br>
-                > HEX_DUMP: ${garbage}<br><br>
-                ROSHAN_ENGINE: Request ignored. Environment too noisy.
+        appendElement(`
+            <div class="msg-row">
+                <div class="sys-line error-msg" style="border-color: var(--phosphor-main);">
+                    <span class="error-glitch">*** DEEP_SYSTEM_CHECK_COMPLETE ***</span><br>
+                    <span style="color:var(--phosphor-main);">IDENTIFYING HOST...</span><br>
+                    > TARGET_IP: ${userIP}<br>
+                    > ENERGY_RES: ${batteryInfo}<br>
+                    > ARCHITECTURE: ${navigator.platform}<br>
+                    > THREAD_COUNT: ${navigator.hardwareConcurrency || '??'}<br><br>
+                    STATUS: USER IS AUTHORIZED BUT HARDWARE IS OBSOLETE.
+                </div>
             </div>
-        </div>
-    `);
+        `);
+        document.title = `⚠️ TRACED: ${userIP}`;
+    } else {
+        // --- THE REGULAR SATIRE ERRORS ---
+        const randomError = errorMessages[Math.floor(Math.random() * errorMessages.length)];
+        const garbage = generateGarbage(12);
 
-    // Reset UI state
+        appendElement(`
+            <div class="msg-row">
+                <div class="sys-line error-msg">
+                    <span class="error-glitch">*** ${randomError} ***</span><br>
+                    CORE_DUMP: ${garbage}<br>
+                    ROSHAN_ENGINE: Internal logic collapsed. 
+                </div>
+            </div>
+        `);
+    }
+
+    // Reset UI
     setTimeout(() => {
         screen.classList.remove('shake');
         input.disabled = false;
         input.focus();
         output.scrollTop = output.scrollHeight;
     }, 500);
-}
-
-function generateGarbage(length) {
-    const chars = '!@#$%^&*()_+-=[]{}|;:,.<>/?~`0123456789ABCDEF';
-    let str = '';
-    for (let i = 0; i < length; i++) {
-        str += chars.charAt(Math.floor(Math.random() * chars.length));
-    }
-    return str;
 }
         // Change favicon to a red 'ERROR' state when the system fails
 const errorFavicon = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%23ff003c'/%3E%3Cpath d='M4 4l8 8m0-8l-8 8' stroke='%23fff' stroke-width='2'/%3E%3C/svg%3E";
