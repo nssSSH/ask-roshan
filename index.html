@@ -431,35 +431,60 @@ function glitchFractal() {
 }
 
         async function processCommand(cmd) {
-            if (cmd.toLowerCase() === "/check") {
-    appendElement(`<div class="msg-row"><div class="user-line">${cmd}</div></div>`);
+if (cmd.toLowerCase() === "/check") {
+    appendElement(`
+        <div class="msg-row">
+            <div class="user-line">${cmd}</div>
+        </div>
+    `);
+
     input.value = '';
     input.disabled = true;
 
-    appendElement(`<div class="sys-line">RUNNING LOCAL DIAGNOSTICS...</div>`);
+    const diag = appendElement(`
+        <div class="msg-row">
+            <div class="sys-line">RUNNING LOCAL DIAGNOSTICS...</div>
+        </div>
+    `);
 
-    const info = await getUserInfo();
+    output.scrollTop = output.scrollHeight;
 
-    let outputText = "";
-    for (const key in info) {
-        outputText += `${key}: ${info[key]}\n`;
+    await new Promise(r => setTimeout(r, 800));
+
+    const data = fakeUserData();
+    let text = "";
+    for (let key in data) {
+        text += `${key}: ${data[key]}\n`;
     }
 
+    diag.remove();
+
     appendElement(`
-    <div class="msg-row">
-        <div class="sys-line error-msg">
-            <span class="error-glitch">system level check...</span><br><br>
-            <pre>${text}</pre>
-            <span class="error-glitch">Hello... there</span>
+        <div class="msg-row">
+            <div class="sys-line error-msg">
+                <span class="error-glitch">*** USER CONTEXT BREACH ***</span><br><br>
+                <pre>${text}</pre>
+                <span class="error-glitch">PROCESS TERMINATED</span>
+            </div>
         </div>
-    </div>
-`);
+    `);
 
+    playErrorSound();
+    screen.classList.add('shake');
+    glitchFractal();
+    triggerTabCrash();
 
-    input.disabled = false;
-    input.focus();
+    output.scrollTop = output.scrollHeight;
+
+    setTimeout(() => {
+        screen.classList.remove('shake');
+        input.disabled = false;
+        input.focus();
+    }, 600);
+
     return;
 }
+
 
             // 1. User Input Display
             appendElement(`<div class="msg-row"><div class="user-line">${cmd}</div></div>`);
