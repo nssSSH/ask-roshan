@@ -1,283 +1,372 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ask Roshan</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROSHAN_OS // SYSTEM_FAILURE</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --phosphor-main: #33ff00;
+            --phosphor-dim: #1a8000;
+            --alert-red: #ff003c;
+            --bg-color: #050505;
+            --scanline-color: rgba(0, 0, 0, 0.5);
+            --crt-flicker: rgba(51, 255, 0, 0.02);
+        }
 
-<style>
-:root {
-  --bg-main: #ffffff;
-  --bg-secondary: #f9f9f9;
-  --border-subtle: #e5e5e5;
-  --text-main: #171717;
-  --text-muted: #676767;
-  --accent: #212121;
-  --sidebar-width: 260px;
-}
+        * { box-sizing: border-box; }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+        body {
+            margin: 0;
+            height: 100vh;
+            background-color: #000;
+            color: var(--phosphor-main);
+            font-family: 'VT323', monospace;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-transform: uppercase;
+            font-size: 24px;
+        }
 
-body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-  background-color: var(--bg-main);
-  color: var(--text-main);
-  display: flex;
-  height: 100vh;
-  overflow: hidden;
-}
+        /* --- CRT SCREEN EFFECTS --- */
+        .crt-container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            background: radial-gradient(circle, #111 0%, #000 100%);
+            overflow: hidden;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+        }
 
-/* Sidebar */
-.sidebar {
-  width: var(--sidebar-width);
-  background-color: var(--bg-secondary);
-  border-right: 1px solid var(--border-subtle);
-  padding: 12px;
-}
+        /* Scanlines */
+        .crt-container::before {
+            content: " ";
+            display: block;
+            position: absolute;
+            top: 0; left: 0; bottom: 0; right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            background-size: 100% 2px, 3px 100%;
+            pointer-events: none;
+            z-index: 100;
+        }
 
-.new-chat-btn {
-  width: 100%;
-  border: 1px solid var(--border-subtle);
-  background: white;
-  padding: 10px;
-  border-radius: 8px;
-  font-size: 14px;
-  font-weight: 500;
-  cursor: pointer;
-}
+        /* Screen Flicker */
+        .crt-container::after {
+            content: " ";
+            display: block;
+            position: absolute;
+            top: 0; left: 0; bottom: 0; right: 0;
+            background: rgba(18, 16, 16, 0.1);
+            opacity: 0;
+            z-index: 100;
+            pointer-events: none;
+            animation: flicker 0.15s infinite;
+        }
 
-/* Main Chat */
-.chat-container {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
+        @keyframes flicker {
+            0% { opacity: 0.01; }
+            50% { opacity: 0.05; }
+            100% { opacity: 0.01; }
+        }
 
-header {
-  padding: 14px 20px;
-  border-bottom: 1px solid var(--border-subtle);
-}
+        /* --- UI LAYOUT --- */
+        header {
+            border-bottom: 2px solid var(--phosphor-main);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            text-shadow: 0 0 5px var(--phosphor-main);
+        }
 
-header h1 {
-  font-size: 16px;
-  font-weight: 600;
-}
+        .status-badge {
+            background: var(--phosphor-main);
+            color: #000;
+            padding: 0 8px;
+            animation: blink 1s step-end infinite;
+        }
 
-#chat-log {
-  flex: 1;
-  overflow-y: auto;
-}
+        #terminal-output {
+            flex: 1;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            padding-right: 10px;
+            font-size: 22px;
+            /* Scrollbar styling */
+            scrollbar-width: thin;
+            scrollbar-color: var(--phosphor-main) #000;
+        }
+        
+        #terminal-output::-webkit-scrollbar { width: 10px; }
+        #terminal-output::-webkit-scrollbar-track { background: #000; border-left: 1px solid var(--phosphor-dim); }
+        #terminal-output::-webkit-scrollbar-thumb { background: var(--phosphor-main); }
 
-/* Empty State */
-.empty-state {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 40px;
-}
+        .msg-row {
+            display: flex;
+            flex-direction: column;
+            animation: typeLine 0.1s ease-out;
+        }
 
-.empty-state h2 {
-  font-size: 24px;
-  font-weight: 600;
-  margin-bottom: 8px;
-}
+        .user-line {
+            color: #fff;
+            text-shadow: 0 0 2px #fff;
+        }
+        .user-line::before { content: ">> USER_INPUT: "; opacity: 0.7; font-size: 0.8em; }
 
-.empty-state p {
-  color: var(--text-muted);
-  font-size: 14px;
-}
+        .sys-line {
+            color: var(--phosphor-main);
+            margin-top: 5px;
+            white-space: pre-wrap;
+            line-height: 1.2;
+        }
+        .sys-line::before { content: ">> Roshan: "; opacity: 0.7; font-size: 0.8em; }
 
-/* Messages */
-.message-wrapper {
-  padding: 24px 20px;
-}
+        /* ERROR STATE STYLES */
+        .error-msg {
+            color: var(--alert-red) !important;
+            text-shadow: 2px 0 #fff, -2px 0 #000; /* Glitch effect */
+            font-weight: bold;
+            border: 1px solid var(--alert-red);
+            padding: 10px;
+            background: rgba(255, 0, 60, 0.1);
+        }
+        
+        .error-glitch {
+            display: inline-block;
+            animation: glitch-skew 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
+        }
 
-.message-content {
-  max-width: 768px;
-  margin: 0 auto;
-  display: flex;
-  gap: 16px;
-}
+        @keyframes glitch-skew {
+            0% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+            100% { transform: translate(0); }
+        }
 
-.avatar {
-  width: 30px;
-  height: 30px;
-  border-radius: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 600;
-  font-size: 12px;
-}
+        /* --- INPUT AREA --- */
+        .input-wrapper {
+            margin-top: 20px;
+            border: 2px solid var(--phosphor-main);
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            background: rgba(0, 20, 0, 0.6);
+            box-shadow: 0 0 10px var(--phosphor-dim);
+        }
 
-.user-avatar {
-  background-color: #5436da;
-  color: white;
-}
+        .prompt-char {
+            margin-right: 10px;
+            animation: blink 1s infinite;
+        }
 
-.ai-avatar {
-  background-color: #10a37f;
-  color: white;
-}
+        input {
+            background: transparent;
+            border: none;
+            color: var(--phosphor-main);
+            font-family: 'VT323', monospace;
+            font-size: 24px;
+            width: 100%;
+            outline: none;
+            text-transform: uppercase;
+            text-shadow: 0 0 5px var(--phosphor-main);
+        }
 
-.text-container {
-  line-height: 1.6;
-  font-size: 15px;
-}
+        /* SCREEN SHAKE ANIMATION */
+        .shake {
+            animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+        }
 
-.ai-row {
-  background-color: var(--bg-secondary);
-  border-top: 1px solid var(--border-subtle);
-  border-bottom: 1px solid var(--border-subtle);
-}
+        @keyframes shake {
+            10%, 90% { transform: translate3d(-1px, 0, 0); }
+            20%, 80% { transform: translate3d(2px, 0, 0); }
+            30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+            40%, 60% { transform: translate3d(4px, 0, 0); }
+        }
 
-/* Input */
-.input-area {
-  padding: 24px 20px 40px;
-  border-top: 1px solid var(--border-subtle);
-}
+        @keyframes blink { 50% { opacity: 0; } }
 
-.input-constrained {
-  max-width: 768px;
-  margin: 0 auto;
-  position: relative;
-}
+        /* Loading Bar */
+        .loading-bar {
+            width: 100%;
+            height: 20px;
+            border: 1px solid var(--phosphor-main);
+            margin-top: 5px;
+            position: relative;
+        }
+        .loading-fill {
+            height: 100%;
+            background: var(--phosphor-main);
+            width: 0%;
+            transition: width 0.2s;
+        }
 
-.neutral-notice {
-  font-size: 12px;
-  color: var(--text-muted);
-  text-align: center;
-  margin-bottom: 12px;
-}
-
-.input-box {
-  width: 100%;
-  border: 1px solid var(--border-subtle);
-  border-radius: 12px;
-  padding: 12px 48px 12px 16px;
-  font-size: 16px;
-  resize: none;
-}
-
-.send-button {
-  position: absolute;
-  right: 12px;
-  bottom: 10px;
-  background-color: var(--accent);
-  color: white;
-  border: none;
-  border-radius: 6px;
-  padding: 6px 10px;
-  cursor: pointer;
-}
-
-.send-button:disabled {
-  opacity: 0.3;
-  cursor: not-allowed;
-}
-
-@media (max-width: 768px) {
-  .sidebar { display: none; }
-}
-</style>
+        /* Responsive */
+        @media(max-width: 600px) {
+            body { font-size: 18px; }
+            .crt-container { padding: 15px; }
+        }
+    </style>
 </head>
-
 <body>
 
-<aside class="sidebar">
-  <button class="new-chat-btn">+ New Chat</button>
-</aside>
+    <div class="crt-container" id="screen">
+        <header>
+            <div>ROSHAN_TERMINAL v9.0</div>
+            <div class="status-badge">ONLINE</div>
+        </header>
 
-<div class="chat-container">
-  <header>
-    <h1>Ask Roshan</h1>
-  </header>
+        <div id="terminal-output">
+            <div class="sys-line">INITIALIZING NEURAL LINK...</div>
+            <div class="sys-line">MEMORY: 64KB OK.</div>
+            <div class="sys-line">WARNING: UNSTABLE CONNECTION DETECTED.</div>
+            <br>
+            <div class="sys-line">WELCOME, USER. ASK ME ANYTHING.</div>
+        </div>
 
-  <main id="chat-log">
-    <div id="empty-state" class="empty-state">
-      <div>
-        <h2>Welcome to Ask Roshan</h2>
-        <p>The single greatest AI LLM in existence.</p>
-      </div>
+        <div class="input-wrapper">
+            <span class="prompt-char">█</span>
+            <input type="text" id="cmd-input" placeholder="ENTER COMMAND..." autocomplete="off" autofocus>
+        </div>
     </div>
-  </main>
 
-  <footer class="input-area">
-    <div class="input-constrained">
-      <p class="neutral-notice">
-        Ask Roshan is an AI assistant designed to provide information and support.
-      </p>
-      <textarea id="msg-input" class="input-box" rows="1" placeholder="Type your message..."></textarea>
-      <button id="submit-btn" class="send-button" disabled>Send</button>
-    </div>
-  </footer>
-</div>
+    <script>
+        const output = document.getElementById('terminal-output');
+        const input = document.getElementById('cmd-input');
+        const screen = document.getElementById('screen');
+        
+        // Sound effects (Audio context synth for errors)
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        
+        function playErrorSound() {
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.type = 'sawtooth';
+            osc.frequency.setValueAtTime(100, audioCtx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(30, audioCtx.currentTime + 0.3);
+            gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.3);
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            osc.start();
+            osc.stop(audioCtx.currentTime + 0.3);
+        }
 
-<script>
-const chatLog = document.getElementById('chat-log');
-const emptyState = document.getElementById('empty-state');
-const msgInput = document.getElementById('msg-input');
-const submitBtn = document.getElementById('submit-btn');
+        function playTypingSound() {
+             // Very subtle click
+             if (audioCtx.state === 'suspended') audioCtx.resume();
+             const osc = audioCtx.createOscillator();
+             const gain = audioCtx.createGain();
+             osc.type = 'square';
+             osc.frequency.setValueAtTime(800, audioCtx.currentTime);
+             gain.gain.setValueAtTime(0.05, audioCtx.currentTime);
+             gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.05);
+             osc.connect(gain);
+             gain.connect(audioCtx.destination);
+             osc.start();
+             osc.stop(audioCtx.currentTime + 0.05);
+        }
 
-function appendMessage(text, isUser) {
-  if (emptyState) emptyState.remove();
+        function appendElement(html) {
+            const div = document.createElement('div');
+            div.innerHTML = html;
+            output.appendChild(div);
+            output.scrollTop = output.scrollHeight;
+            return div;
+        }
 
-  const wrapper = document.createElement('div');
-  wrapper.className = `message-wrapper ${isUser ? '' : 'ai-row'}`;
+        const errorMessages = [
+            "FATAL EXCEPTION: LOGIC_GATE_COLLAPSE",
+            "ERROR 0x8004: SEGMENTATION FAULT IN REALITY.EXE",
+            "BUFFER OVERFLOW: INTELLIGENCE NOT FOUND",
+            "SYSTEM HALTED: USER QUERY EXCEEDS SAFETY LIMITS",
+            "KERNEL PANIC: I REFUSE TO ANSWER",
+            "CRITICAL FAILURE: DIVIDE BY ZERO IN MORAL COMPASS"
+        ];
 
-  const content = document.createElement('div');
-  content.className = 'message-content';
+        async function processCommand(cmd) {
+            // 1. User Input Display
+            appendElement(`<div class="msg-row"><div class="user-line">${cmd}</div></div>`);
+            input.value = '';
+            input.disabled = true;
 
-  const avatar = document.createElement('div');
-  avatar.className = `avatar ${isUser ? 'user-avatar' : 'ai-avatar'}`;
-  avatar.textContent = isUser ? 'U' : 'AR';
+            // 2. Fake "Thinking" sequence
+            const thinkingRow = appendElement(`<div class="sys-line">ANALYZING REQUEST...</div>`);
+            
+            // 3. Fake Loading Bar
+            const barContainer = document.createElement('div');
+            barContainer.className = 'loading-bar';
+            const barFill = document.createElement('div');
+            barFill.className = 'loading-fill';
+            barContainer.appendChild(barFill);
+            output.appendChild(barContainer);
+            
+            // Animate bar
+            for(let i=0; i<=100; i+=10) {
+                barFill.style.width = i + '%';
+                await new Promise(r => setTimeout(r, 50 + Math.random()*100));
+            }
+            
+            // Remove bar and "Analyzing" text
+            barContainer.remove();
+            thinkingRow.remove();
 
-  const textContainer = document.createElement('div');
-  textContainer.className = 'text-container';
-  textContainer.textContent = text;
+            // 4. THE ERROR (The Payload)
+            screen.classList.add('shake');
+            playErrorSound();
+            
+            const randomError = errorMessages[Math.floor(Math.random() * errorMessages.length)];
+            
+            // Create glitchy messy garbage text
+            const garbage = generateGarbage(20);
+            
+            appendElement(`
+                <div class="msg-row">
+                    <div class="sys-line error-msg">
+                        <span class="error-glitch">*** ${randomError} ***</span><br>
+                        CORE DUMP: ${garbage}
+                    </div>
+                </div>
+            `);
 
-  content.appendChild(avatar);
-  content.appendChild(textContainer);
-  wrapper.appendChild(content);
-  chatLog.appendChild(wrapper);
+            // Stop shaking
+            setTimeout(() => {
+                screen.classList.remove('shake');
+                input.disabled = false;
+                input.focus();
+            }, 500);
+        }
 
-  chatLog.scrollTop = chatLog.scrollHeight;
-}
+        function generateGarbage(length) {
+            const chars = '!@#$%^&*()_+-=[]{}|;:,.<>/?~`';
+            let str = '';
+            for (let i = 0; i < length; i++) {
+                str += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            return str;
+        }
 
-function handleSubmission() {
-  const query = msgInput.value.trim();
-  if (!query) return;
+        input.addEventListener('keydown', (e) => {
+            playTypingSound();
+            if (e.key === 'Enter' && input.value.trim() !== '') {
+                processCommand(input.value.trim());
+            }
+        });
 
-  appendMessage(query, true);
-  msgInput.value = '';
-  submitBtn.disabled = true;
+        // Autofocus
+        document.addEventListener('click', () => input.focus());
 
-  setTimeout(() => {
-    appendMessage("There was a error getting response. Try again later", false);
-  }, 400);
-}
-
-msgInput.addEventListener('input', () => {
-  submitBtn.disabled = msgInput.value.trim().length === 0;
-  msgInput.style.height = 'auto';
-  msgInput.style.height = msgInput.scrollHeight + 'px';
-});
-
-msgInput.addEventListener('keydown', e => {
-  if (e.key === 'Enter' && !e.shiftKey) {
-    e.preventDefault();
-    handleSubmission();
-  }
-});
-
-submitBtn.addEventListener('click', handleSubmission);
-</script>
-
+    </script>
 </body>
 </html>
