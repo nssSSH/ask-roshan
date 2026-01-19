@@ -391,7 +391,21 @@
             }
             return str;
         }
+        // Change favicon to a red 'ERROR' state when the system fails
+const errorFavicon = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%23ff003c'/%3E%3Cpath d='M4 4l8 8m0-8l-8 8' stroke='%23fff' stroke-width='2'/%3E%3C/svg%3E";
 
+function triggerTabCrash() {
+    // Swap the favicon
+    document.querySelector("link[rel*='icon']").href = errorFavicon;
+    
+    // Glitch the Document Title
+    let originalTitle = document.title;
+    document.title = "Something happened....";
+    
+    setTimeout(() => { document.title = "ERR_0xNSS"; }, 500);
+}
+
+// Call triggerTabCrash() inside your processCommand after the loading bar finishes.
         input.addEventListener('keydown', (e) => {
             playTypingSound();
             if (e.key === 'Enter' && input.value.trim() !== '') {
