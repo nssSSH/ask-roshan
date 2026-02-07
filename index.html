@@ -1471,6 +1471,798 @@
                 opacity: 0.2;
             }
         }
+
+
+
+        .mukul-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: #000;
+            z-index: 3000;
+            overflow: hidden;
+            perspective: 1000px;
+        }
+
+        .mukul-overlay::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(ellipse at 50% 50%, transparent 0%, #000 70%),
+                radial-gradient(circle at 50% 50%, #1a0505 0%, transparent 50%);
+            z-index: 1;
+            animation: mukul-bg-breathe 4s ease-in-out infinite;
+        }
+
+        @keyframes mukul-bg-breathe {
+
+            0%,
+            100% {
+                opacity: 0.8;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.1);
+            }
+        }
+
+        /* VHS NOISE OVERLAY */
+        .mukul-noise {
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: transparent url('data:image/svg+xml,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noise)" opacity="0.4"/></svg>') repeat;
+            opacity: 0.15;
+            z-index: 100;
+            pointer-events: none;
+            animation: mukul-noise-move 0.2s steps(10) infinite;
+        }
+
+        @keyframes mukul-noise-move {
+            0% {
+                transform: translate(0, 0);
+            }
+
+            100% {
+                transform: translate(-10%, -10%);
+            }
+        }
+
+        /* SCANLINES */
+        .mukul-scanlines {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(0, 0, 0, 0.3) 2px,
+                    rgba(0, 0, 0, 0.3) 4px);
+            z-index: 101;
+            pointer-events: none;
+            animation: mukul-scanline-flicker 0.1s infinite;
+        }
+
+        @keyframes mukul-scanline-flicker {
+
+            0%,
+            100% {
+                opacity: 0.3;
+            }
+
+            50% {
+                opacity: 0.35;
+            }
+        }
+
+        /* SACRED GEOMETRY CANVAS */
+        .mukul-geometry-canvas {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+        }
+
+        /* 3D ROTATING RINGS */
+        .mukul-rings {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform-style: preserve-3d;
+            transform: translate(-50%, -50%) rotateX(70deg);
+            z-index: 3;
+        }
+
+        .mukul-ring {
+            position: absolute;
+            border: 2px solid;
+            border-radius: 50%;
+            animation: mukul-ring-rotate linear infinite;
+        }
+
+        .mukul-ring:nth-child(1) {
+            width: 200px;
+            height: 200px;
+            margin: -100px 0 0 -100px;
+            border-color: rgba(255, 215, 0, 0.8);
+            animation-duration: 8s;
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.5), inset 0 0 30px rgba(255, 215, 0, 0.2);
+        }
+
+        .mukul-ring:nth-child(2) {
+            width: 300px;
+            height: 300px;
+            margin: -150px 0 0 -150px;
+            border-color: rgba(255, 140, 0, 0.6);
+            animation-duration: 12s;
+            animation-direction: reverse;
+            box-shadow: 0 0 40px rgba(255, 140, 0, 0.4), inset 0 0 40px rgba(255, 140, 0, 0.15);
+        }
+
+        .mukul-ring:nth-child(3) {
+            width: 400px;
+            height: 400px;
+            margin: -200px 0 0 -200px;
+            border-color: rgba(255, 100, 0, 0.4);
+            animation-duration: 16s;
+            box-shadow: 0 0 50px rgba(255, 100, 0, 0.3), inset 0 0 50px rgba(255, 100, 0, 0.1);
+        }
+
+        .mukul-ring:nth-child(4) {
+            width: 500px;
+            height: 500px;
+            margin: -250px 0 0 -250px;
+            border-color: rgba(255, 50, 0, 0.3);
+            animation-duration: 20s;
+            animation-direction: reverse;
+            box-shadow: 0 0 60px rgba(255, 50, 0, 0.2);
+        }
+
+        @keyframes mukul-ring-rotate {
+            0% {
+                transform: rotateZ(0deg) rotateY(0deg);
+            }
+
+            100% {
+                transform: rotateZ(360deg) rotateY(360deg);
+            }
+        }
+
+        /* ENERGY PULSES */
+        .mukul-pulse-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 4;
+        }
+
+        .mukul-energy-pulse {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            margin: -5px 0 0 -5px;
+            border-radius: 50%;
+            background: radial-gradient(circle, #ffd700 0%, transparent 70%);
+            animation: mukul-pulse-expand 2s ease-out infinite;
+        }
+
+        .mukul-energy-pulse:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .mukul-energy-pulse:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+
+        .mukul-energy-pulse:nth-child(3) {
+            animation-delay: 1s;
+        }
+
+        .mukul-energy-pulse:nth-child(4) {
+            animation-delay: 1.5s;
+        }
+
+        @keyframes mukul-pulse-expand {
+            0% {
+                width: 10px;
+                height: 10px;
+                margin: -5px 0 0 -5px;
+                opacity: 1;
+                box-shadow: 0 0 60px 30px rgba(255, 215, 0, 0.8);
+            }
+
+            100% {
+                width: 800px;
+                height: 800px;
+                margin: -400px 0 0 -400px;
+                opacity: 0;
+                box-shadow: 0 0 100px 50px rgba(255, 215, 0, 0);
+            }
+        }
+
+        /* FLOATING PARTICLES ENHANCED */
+        .mukul-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        .mukul-particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: #ffd700;
+            border-radius: 50%;
+            box-shadow:
+                0 0 10px #ffd700,
+                0 0 20px #ff8c00,
+                0 0 40px #ffd700;
+            animation: mukul-particle-float linear infinite;
+        }
+
+        @keyframes mukul-particle-float {
+            0% {
+                transform: translateY(100vh) translateX(0) scale(0);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+                transform: translateY(90vh) translateX(10px) scale(1);
+            }
+
+            90% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-10vh) translateX(-10px) scale(0.5);
+                opacity: 0;
+            }
+        }
+
+        /* CHROMATIC ABERRATION GLITCH TEXT */
+        .mukul-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 50;
+            padding: 40px;
+        }
+
+        .mukul-glitch-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .mukul-name {
+            font-size: 120px;
+            font-weight: bold;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 20px;
+            position: relative;
+            animation: mukul-name-glitch 0.3s infinite;
+        }
+
+        .mukul-name::before,
+        .mukul-name::after {
+            content: 'MUKUL';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .mukul-name::before {
+            color: #ff0040;
+            animation: mukul-glitch-1 0.2s infinite;
+            clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%);
+            transform: translateX(-3px);
+        }
+
+        .mukul-name::after {
+            color: #00ffff;
+            animation: mukul-glitch-2 0.3s infinite;
+            clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%);
+            transform: translateX(3px);
+        }
+
+        @keyframes mukul-name-glitch {
+
+            0%,
+            90%,
+            100% {
+                transform: translate(0);
+            }
+
+            92% {
+                transform: translate(-5px, 2px);
+            }
+
+            94% {
+                transform: translate(5px, -2px);
+            }
+
+            96% {
+                transform: translate(-2px, -3px);
+            }
+
+            98% {
+                transform: translate(3px, 3px);
+            }
+        }
+
+        @keyframes mukul-glitch-1 {
+
+            0%,
+            90%,
+            100% {
+                transform: translateX(-3px);
+                opacity: 0.8;
+            }
+
+            92% {
+                transform: translateX(10px) skewX(5deg);
+                opacity: 1;
+            }
+
+            94% {
+                transform: translateX(-8px) skewX(-3deg);
+                opacity: 0.6;
+            }
+
+            96% {
+                transform: translateX(5px);
+                opacity: 0.9;
+            }
+        }
+
+        @keyframes mukul-glitch-2 {
+
+            0%,
+            90%,
+            100% {
+                transform: translateX(3px);
+                opacity: 0.8;
+            }
+
+            91% {
+                transform: translateX(-8px) skewX(-5deg);
+                opacity: 1;
+            }
+
+            93% {
+                transform: translateX(12px) skewX(3deg);
+                opacity: 0.6;
+            }
+
+            97% {
+                transform: translateX(-5px);
+                opacity: 0.9;
+            }
+        }
+
+        .mukul-subtitle {
+            font-size: 24px;
+            color: #ffd700;
+            letter-spacing: 15px;
+            margin-top: 20px;
+            text-shadow:
+                0 0 10px #ffd700,
+                0 0 20px #ff8c00,
+                0 0 40px #ffd700;
+            animation: mukul-subtitle-pulse 2s ease-in-out infinite;
+            opacity: 0;
+        }
+
+        @keyframes mukul-subtitle-pulse {
+
+            0%,
+            100% {
+                text-shadow: 0 0 10px #ffd700, 0 0 20px #ff8c00;
+                letter-spacing: 15px;
+            }
+
+            50% {
+                text-shadow: 0 0 30px #ffd700, 0 0 60px #ff8c00, 0 0 90px #ffd700;
+                letter-spacing: 18px;
+            }
+        }
+
+        .mukul-message {
+            font-size: 22px;
+            color: #fff;
+            max-width: 700px;
+            margin: 40px auto;
+            line-height: 1.8;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s ease;
+        }
+
+        .mukul-message.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .mukul-link {
+            display: inline-block;
+            padding: 20px 50px;
+            background: transparent;
+            color: #ffd700;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            letter-spacing: 5px;
+            border: 2px solid #ffd700;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(30px) scale(0.9);
+            transition: all 0.5s ease;
+            z-index: 1;
+        }
+
+        .mukul-link::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: linear-gradient(135deg, #ffd700, #ff8c00);
+            transition: all 0.5s ease;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+        }
+
+        .mukul-link:hover {
+            color: #000;
+            box-shadow:
+                0 0 30px #ffd700,
+                0 0 60px rgba(255, 140, 0, 0.5),
+                inset 0 0 30px rgba(255, 255, 255, 0.2);
+            transform: translateY(0) scale(1.05);
+        }
+
+        .mukul-link:hover::before {
+            width: 300%;
+            height: 300%;
+        }
+
+        .mukul-link.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        /* REALITY TEAR EFFECT */
+        .mukul-tear {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 4px;
+            height: 0;
+            background: linear-gradient(180deg,
+                    transparent,
+                    #ffd700,
+                    #fff,
+                    #ffd700,
+                    transparent);
+            transform: translateX(-50%);
+            z-index: 200;
+            box-shadow:
+                0 0 30px #ffd700,
+                0 0 60px #ffd700,
+                0 0 100px #ff8c00;
+            animation: mukul-tear-open 1.5s ease-out forwards;
+        }
+
+        @keyframes mukul-tear-open {
+            0% {
+                height: 0;
+                top: 50%;
+            }
+
+            50% {
+                height: 100vh;
+                top: 0;
+            }
+
+            100% {
+                height: 100vh;
+                top: 0;
+                width: 100vw;
+                opacity: 0;
+            }
+        }
+
+        /* SCREEN SHAKE */
+        .mukul-shake {
+            animation: mukul-screen-shake 0.1s infinite;
+        }
+
+        @keyframes mukul-screen-shake {
+
+            0%,
+            100% {
+                transform: translate(0, 0) rotate(0);
+            }
+
+            10% {
+                transform: translate(-2px, -1px) rotate(-0.5deg);
+            }
+
+            20% {
+                transform: translate(2px, 2px) rotate(0.5deg);
+            }
+
+            30% {
+                transform: translate(-2px, 1px) rotate(0deg);
+            }
+
+            40% {
+                transform: translate(2px, -2px) rotate(0.5deg);
+            }
+
+            50% {
+                transform: translate(-1px, 2px) rotate(-0.5deg);
+            }
+
+            60% {
+                transform: translate(2px, 1px) rotate(0deg);
+            }
+
+            70% {
+                transform: translate(-2px, -2px) rotate(-0.5deg);
+            }
+
+            80% {
+                transform: translate(1px, 2px) rotate(0.5deg);
+            }
+
+            90% {
+                transform: translate(-1px, -1px) rotate(0deg);
+            }
+        }
+
+        /* FLASH EFFECT */
+        .mukul-flash {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: #fff;
+            z-index: 9999;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .mukul-flash.active {
+            animation: mukul-flash-anim 0.5s ease-out;
+        }
+
+        @keyframes mukul-flash-anim {
+            0% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+        /* EYE OF MUKUL */
+        .mukul-eye {
+            position: absolute;
+            width: 150px;
+            height: 80px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            z-index: 60;
+            opacity: 0;
+        }
+
+        .mukul-eye-outer {
+            width: 100%;
+            height: 100%;
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            background: linear-gradient(135deg, #ffd700, #ff8c00);
+            position: relative;
+            box-shadow:
+                0 0 50px #ffd700,
+                0 0 100px #ff8c00,
+                inset 0 0 30px rgba(0, 0, 0, 0.3);
+            animation: mukul-eye-glow 1s ease-in-out infinite alternate;
+        }
+
+        @keyframes mukul-eye-glow {
+            0% {
+                box-shadow: 0 0 50px #ffd700, 0 0 100px #ff8c00;
+            }
+
+            100% {
+                box-shadow: 0 0 80px #ffd700, 0 0 150px #ff8c00, 0 0 200px #ff6600;
+            }
+        }
+
+        .mukul-eye-inner {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: radial-gradient(circle, #000 40%, #1a0a00 100%);
+            border-radius: 50%;
+            box-shadow: inset 0 0 20px #000;
+        }
+
+        .mukul-eye-pupil {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #000;
+            border-radius: 50%;
+            animation: mukul-pupil-look 3s ease-in-out infinite;
+        }
+
+        .mukul-eye-pupil::after {
+            content: '';
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            top: 3px;
+            left: 3px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+        }
+
+        @keyframes mukul-pupil-look {
+
+            0%,
+            100% {
+                transform: translate(-50%, -50%);
+            }
+
+            25% {
+                transform: translate(-70%, -60%);
+            }
+
+            50% {
+                transform: translate(-30%, -40%);
+            }
+
+            75% {
+                transform: translate(-60%, -55%);
+            }
+        }
+
+        .mukul-eye.visible {
+            animation: mukul-eye-reveal 1s ease-out forwards;
+        }
+
+        @keyframes mukul-eye-reveal {
+            0% {
+                transform: translate(-50%, -50%) scale(0);
+                opacity: 0;
+            }
+
+            50% {
+                transform: translate(-50%, -50%) scale(1.2);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* LIGHTNING */
+        .mukul-lightning {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 3px;
+            height: 100%;
+            background: linear-gradient(180deg, #fff, #ffd700, #fff);
+            transform: translateX(-50%);
+            z-index: 150;
+            opacity: 0;
+            filter: blur(1px);
+        }
+
+        .mukul-lightning.flash {
+            animation: mukul-lightning-strike 0.2s ease-out;
+        }
+
+        @keyframes mukul-lightning-strike {
+            0% {
+                opacity: 1;
+                transform: translateX(-50%) scaleX(1);
+            }
+
+            50% {
+                opacity: 1;
+                transform: translateX(-50%) scaleX(3);
+            }
+
+            100% {
+                opacity: 0;
+                transform: translateX(-50%) scaleX(1);
+            }
+        }
+
+        /* PORTAL VORTEX */
+        .mukul-vortex {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 600px;
+            height: 600px;
+            margin: -300px 0 0 -300px;
+            border-radius: 50%;
+            background: conic-gradient(from 0deg,
+                    transparent,
+                    rgba(255, 215, 0, 0.3),
+                    transparent,
+                    rgba(255, 140, 0, 0.3),
+                    transparent,
+                    rgba(255, 100, 0, 0.3),
+                    transparent);
+            animation: mukul-vortex-spin 4s linear infinite;
+            z-index: 1;
+            opacity: 0;
+            transform-origin: center;
+        }
+
+        .mukul-vortex.active {
+            opacity: 1;
+        }
+
+        @keyframes mukul-vortex-spin {
+            0% {
+                transform: rotate(0deg) scale(1);
+            }
+
+            50% {
+                transform: rotate(180deg) scale(1.1);
+            }
+
+            100% {
+                transform: rotate(360deg) scale(1);
+            }
+        }
     </style>
 </head>
 
@@ -1512,7 +2304,7 @@
         const availableCommands = [
             "/help", "/random", "/check", "/please", "/possessed", "/surveillance",
             "/countdown", "/virus", "/ghost", "/blackout", "/glitch", "/whisper",
-            "/reboot", "/trace", "/echo", "/signal", "/about", "pwd", "whoami", "ls", "cat"
+            "/reboot", "/trace", "/echo", "/signal", "/about", "mukul", "pwd", "whoami", "ls", "cat"
         ];
 
         // Sound effects (Audio context synth for errors)
@@ -1836,6 +2628,366 @@
                 historyIndex = commandHistory.length;
             }
 
+            
+            if (lowCmd === "mukul") {
+                appendElement(`
+                    <div class="msg-row">
+                        <div class="user-line">${cmd}</div>
+                    </div>
+                `);
+
+                input.value = '';
+                input.disabled = true;
+
+                // Create flash element
+                const flash = document.createElement('div');
+                flash.className = 'mukul-flash';
+                document.body.appendChild(flash);
+
+                // PHASE 1: Screen shake and initial terror
+                screen.classList.add('mukul-shake');
+                playErrorSound();
+                await new Promise(r => setTimeout(r, 500));
+
+                // Flash and create overlay
+                flash.classList.add('active');
+
+                // Create the INSANE mukul overlay
+                const mukulOverlay = document.createElement('div');
+                mukulOverlay.className = 'mukul-overlay';
+                mukulOverlay.innerHTML = `
+                    <div class="mukul-noise"></div>
+                    <div class="mukul-scanlines"></div>
+                    <div class="mukul-vortex"></div>
+                    <canvas class="mukul-geometry-canvas" id="mukul-sacred-geometry"></canvas>
+                    <div class="mukul-rings">
+                        <div class="mukul-ring"></div>
+                        <div class="mukul-ring"></div>
+                        <div class="mukul-ring"></div>
+                        <div class="mukul-ring"></div>
+                    </div>
+                    <div class="mukul-pulse-container">
+                        <div class="mukul-energy-pulse"></div>
+                        <div class="mukul-energy-pulse"></div>
+                        <div class="mukul-energy-pulse"></div>
+                        <div class="mukul-energy-pulse"></div>
+                    </div>
+                    <div class="mukul-particles"></div>
+                    <div class="mukul-lightning"></div>
+                    <div class="mukul-eye">
+                        <div class="mukul-eye-outer">
+                            <div class="mukul-eye-inner">
+                                <div class="mukul-eye-pupil"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mukul-content">
+                        <div class="mukul-glitch-container">
+                            <div class="mukul-name">MUKUL</div>
+                        </div>
+                        <div class="mukul-subtitle">THE FORBIDDEN ONE</div>
+                        <div class="mukul-message"></div>
+                        <a href="https://mukulism.fandom.com/wiki/Mukulism_Wiki" target="_blank" class="mukul-link">⚡ EMBRACE MUKULISM ⚡</a>
+                    </div>
+                    <div class="mukul-tear"></div>
+                `;
+                document.body.appendChild(mukulOverlay);
+
+                // Setup sacred geometry canvas
+                const geoCanvas = document.getElementById('mukul-sacred-geometry');
+                geoCanvas.width = 600;
+                geoCanvas.height = 600;
+                const geoCtx = geoCanvas.getContext('2d');
+                let geoAngle = 0;
+                let geoAnimating = true;
+
+                // Sacred geometry animation
+                function drawSacredGeometry() {
+                    if (!geoAnimating) return;
+
+                    geoCtx.clearRect(0, 0, 600, 600);
+                    const cx = 300, cy = 300;
+
+                    geoCtx.save();
+                    geoCtx.translate(cx, cy);
+                    geoCtx.rotate(geoAngle);
+
+                    // Draw multiple layers of sacred geometry
+                    for (let layer = 0; layer < 5; layer++) {
+                        const radius = 50 + layer * 40;
+                        const sides = 6 + layer;
+                        const layerAngle = geoAngle * (layer % 2 === 0 ? 1 : -1) * 0.5;
+
+                        geoCtx.save();
+                        geoCtx.rotate(layerAngle);
+
+                        // Outer glow
+                        geoCtx.strokeStyle = `rgba(255, 215, 0, ${0.8 - layer * 0.15})`;
+                        geoCtx.lineWidth = 2;
+                        geoCtx.shadowColor = '#ffd700';
+                        geoCtx.shadowBlur = 20;
+
+                        geoCtx.beginPath();
+                        for (let i = 0; i <= sides; i++) {
+                            const angle = (i / sides) * Math.PI * 2;
+                            const x = Math.cos(angle) * radius;
+                            const y = Math.sin(angle) * radius;
+                            if (i === 0) geoCtx.moveTo(x, y);
+                            else geoCtx.lineTo(x, y);
+                        }
+                        geoCtx.closePath();
+                        geoCtx.stroke();
+
+                        // Inner connections
+                        if (layer > 0) {
+                            geoCtx.strokeStyle = `rgba(255, 140, 0, ${0.4 - layer * 0.05})`;
+                            geoCtx.lineWidth = 1;
+                            for (let i = 0; i < sides; i++) {
+                                const angle1 = (i / sides) * Math.PI * 2;
+                                const angle2 = ((i + 2) / sides) * Math.PI * 2;
+                                geoCtx.beginPath();
+                                geoCtx.moveTo(Math.cos(angle1) * radius, Math.sin(angle1) * radius);
+                                geoCtx.lineTo(Math.cos(angle2) * radius, Math.sin(angle2) * radius);
+                                geoCtx.stroke();
+                            }
+                        }
+
+                        geoCtx.restore();
+                    }
+
+                    // Center symbol - Eye
+                    geoCtx.fillStyle = '#ffd700';
+                    geoCtx.shadowColor = '#ffd700';
+                    geoCtx.shadowBlur = 30;
+                    geoCtx.beginPath();
+                    geoCtx.ellipse(0, 0, 30, 15, 0, 0, Math.PI * 2);
+                    geoCtx.fill();
+
+                    geoCtx.fillStyle = '#000';
+                    geoCtx.shadowBlur = 0;
+                    geoCtx.beginPath();
+                    geoCtx.arc(0, 0, 8, 0, Math.PI * 2);
+                    geoCtx.fill();
+
+                    geoCtx.restore();
+
+                    geoAngle += 0.01;
+                    requestAnimationFrame(drawSacredGeometry);
+                }
+                drawSacredGeometry();
+
+                // Create enhanced floating particles
+                const particleContainer = mukulOverlay.querySelector('.mukul-particles');
+                for (let i = 0; i < 80; i++) {
+                    const particle = document.createElement('div');
+                    particle.className = 'mukul-particle';
+                    particle.style.left = Math.random() * 100 + '%';
+                    particle.style.animationDelay = Math.random() * 5 + 's';
+                    particle.style.animationDuration = (4 + Math.random() * 6) + 's';
+                    particleContainer.appendChild(particle);
+                }
+
+                // AUDIO: Create ethereal multi-layered sound
+                if (audioCtx.state === 'suspended') audioCtx.resume();
+
+                // Main drone
+                const droneOsc1 = audioCtx.createOscillator();
+                const droneOsc2 = audioCtx.createOscillator();
+                const droneOsc3 = audioCtx.createOscillator();
+                const subBass = audioCtx.createOscillator();
+                const lfo = audioCtx.createOscillator();
+                const lfoGain = audioCtx.createGain();
+                const mainGain = audioCtx.createGain();
+                const filter = audioCtx.createBiquadFilter();
+
+                // LFO modulation
+                lfo.frequency.setValueAtTime(0.5, audioCtx.currentTime);
+                lfoGain.gain.setValueAtTime(50, audioCtx.currentTime);
+                lfo.connect(lfoGain);
+
+                // Main oscillators
+                droneOsc1.type = 'sine';
+                droneOsc1.frequency.setValueAtTime(110, audioCtx.currentTime); // A2
+                lfoGain.connect(droneOsc1.frequency);
+
+                droneOsc2.type = 'sine';
+                droneOsc2.frequency.setValueAtTime(165, audioCtx.currentTime); // E3
+
+                droneOsc3.type = 'triangle';
+                droneOsc3.frequency.setValueAtTime(220, audioCtx.currentTime); // A3
+
+                subBass.type = 'sine';
+                subBass.frequency.setValueAtTime(55, audioCtx.currentTime); // A1
+
+                // Filter
+                filter.type = 'lowpass';
+                filter.frequency.setValueAtTime(400, audioCtx.currentTime);
+                filter.frequency.linearRampToValueAtTime(2000, audioCtx.currentTime + 5);
+
+                // Connect everything
+                droneOsc1.connect(filter);
+                droneOsc2.connect(filter);
+                droneOsc3.connect(filter);
+                subBass.connect(mainGain);
+                filter.connect(mainGain);
+                mainGain.connect(audioCtx.destination);
+
+                mainGain.gain.setValueAtTime(0, audioCtx.currentTime);
+                mainGain.gain.linearRampToValueAtTime(0.12, audioCtx.currentTime + 2);
+
+                lfo.start();
+                droneOsc1.start();
+                droneOsc2.start();
+                droneOsc3.start();
+                subBass.start();
+
+                await new Promise(r => setTimeout(r, 300));
+                screen.classList.remove('mukul-shake');
+
+                // PHASE 2: Activate vortex
+                const vortex = mukulOverlay.querySelector('.mukul-vortex');
+                vortex.classList.add('active');
+
+                // Lightning strikes
+                const lightning = mukulOverlay.querySelector('.mukul-lightning');
+                const strikeLightning = () => {
+                    lightning.style.left = (20 + Math.random() * 60) + '%';
+                    lightning.classList.add('flash');
+
+                    // Thunder sound
+                    const thunder = audioCtx.createOscillator();
+                    const thunderGain = audioCtx.createGain();
+                    thunder.type = 'sawtooth';
+                    thunder.frequency.setValueAtTime(100, audioCtx.currentTime);
+                    thunder.frequency.exponentialRampToValueAtTime(20, audioCtx.currentTime + 0.5);
+                    thunderGain.gain.setValueAtTime(0.3, audioCtx.currentTime);
+                    thunderGain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.5);
+                    thunder.connect(thunderGain);
+                    thunderGain.connect(audioCtx.destination);
+                    thunder.start();
+                    thunder.stop(audioCtx.currentTime + 0.5);
+
+                    setTimeout(() => lightning.classList.remove('flash'), 200);
+                };
+
+                // Strike lightning multiple times
+                strikeLightning();
+                await new Promise(r => setTimeout(r, 800));
+                strikeLightning();
+                await new Promise(r => setTimeout(r, 1200));
+                strikeLightning();
+
+                // PHASE 3: Show the EYE
+                await new Promise(r => setTimeout(r, 1500));
+                const eye = mukulOverlay.querySelector('.mukul-eye');
+                eye.classList.add('visible');
+
+                // Eye reveal sound
+                const eyeSound = audioCtx.createOscillator();
+                const eyeGain = audioCtx.createGain();
+                eyeSound.type = 'sine';
+                eyeSound.frequency.setValueAtTime(200, audioCtx.currentTime);
+                eyeSound.frequency.exponentialRampToValueAtTime(800, audioCtx.currentTime + 1);
+                eyeGain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+                eyeGain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 1);
+                eyeSound.connect(eyeGain);
+                eyeGain.connect(audioCtx.destination);
+                eyeSound.start();
+                eyeSound.stop(audioCtx.currentTime + 1);
+
+                await new Promise(r => setTimeout(r, 2000));
+
+                // Hide eye, show name
+                eye.style.transition = 'opacity 1s';
+                eye.style.opacity = '0';
+
+                // PHASE 4: Reveal the name with glitch
+                await new Promise(r => setTimeout(r, 500));
+                const subtitle = mukulOverlay.querySelector('.mukul-subtitle');
+                subtitle.style.opacity = '1';
+                subtitle.style.transition = 'opacity 1s';
+
+                // PHASE 5: Type the message
+                await new Promise(r => setTimeout(r, 2000));
+                const messageEl = mukulOverlay.querySelector('.mukul-message');
+                const fullMessage = "You've spoken the forbidden name... You now have to follow Mukulism to survive.";
+
+                messageEl.classList.add('visible');
+
+                for (let i = 0; i < fullMessage.length; i++) {
+                    messageEl.textContent += fullMessage[i];
+
+                    // Typing sound
+                    if (i % 2 === 0) {
+                        const tick = audioCtx.createOscillator();
+                        const tickGain = audioCtx.createGain();
+                        tick.type = 'square';
+                        tick.frequency.setValueAtTime(800 + Math.random() * 400, audioCtx.currentTime);
+                        tickGain.gain.setValueAtTime(0.02, audioCtx.currentTime);
+                        tickGain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.05);
+                        tick.connect(tickGain);
+                        tickGain.connect(audioCtx.destination);
+                        tick.start();
+                        tick.stop(audioCtx.currentTime + 0.05);
+                    }
+
+                    await new Promise(r => setTimeout(r, 50));
+                }
+
+                // PHASE 6: Show the link
+                await new Promise(r => setTimeout(r, 2000));
+                const linkEl = mukulOverlay.querySelector('.mukul-link');
+                linkEl.classList.add('visible');
+
+                // Final lightning burst
+                strikeLightning();
+                await new Promise(r => setTimeout(r, 200));
+                strikeLightning();
+
+                // Wait for user to see everything
+                await new Promise(r => setTimeout(r, 6000));
+
+                // PHASE 7: Dramatic exit
+                mainGain.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 3);
+                filter.frequency.linearRampToValueAtTime(100, audioCtx.currentTime + 3);
+
+                mukulOverlay.style.transition = 'opacity 2s, filter 2s';
+                mukulOverlay.style.opacity = '0';
+                mukulOverlay.style.filter = 'blur(20px)';
+
+                geoAnimating = false;
+
+                setTimeout(() => {
+                    lfo.stop();
+                    droneOsc1.stop();
+                    droneOsc2.stop();
+                    droneOsc3.stop();
+                    subBass.stop();
+                    mukulOverlay.remove();
+                    flash.remove();
+                }, 2500);
+
+                // Screen shake on exit
+                screen.classList.add('mukul-shake');
+                await new Promise(r => setTimeout(r, 500));
+                screen.classList.remove('mukul-shake');
+
+                appendElement(`
+                    <div class="sys-line" style="color: #ffd700; text-shadow: 0 0 20px #ffd700, 0 0 40px #ff8c00;">
+                        ⚡ DIVINE INTERVENTION COMPLETE ⚡<br>
+                        <span style="color: #fff;">YOU HAVE WITNESSED THE FORBIDDEN ONE</span><br>
+                        <span style="font-size: 18px; color: #ff8c00;">YOUR SOUL HAS BEEN MARKED BY MUKULISM</span><br>
+                        <a href="https://mukulism.fandom.com/wiki/Mukulism_Wiki" target="_blank" style="color: #ffd700; text-decoration: underline;">https://mukulism.fandom.com/wiki/Mukulism_Wiki</a>
+                    </div>
+                `);
+
+                input.disabled = false;
+                input.focus();
+                output.scrollTop = output.scrollHeight;
+
+                return;
+            }
+
             // === /HELP - SHOW ALL COMMANDS ===
             if (lowCmd === "/help") {
                 appendElement(`
@@ -1912,9 +3064,10 @@
 
                             <div class="help-cmd">/about</div>
                             <div class="help-desc">The truth behind this system</div>
+
+                            
                         </div>
                         <div style="text-align: center; margin-top: 15px; color: #666; font-size: 14px;">
-                            TYPE ANY COMMAND TO EXPERIENCE THE HORROR
                         </div>
                     </div>
                 `);
@@ -3229,8 +4382,8 @@
         // 4. Console Clearing/Nuking
         setInterval(() => {
             console.clear();
-            console.log("%cROSHAN_OS SECURITY ACTIVE", "color: red; font-size: 40px; font-weight: bold;");
-            console.log("%cUNAUTHORIZED ACCESS IS PROHIBITED.", "color: red; font-size: 20px;");
+            console.log("%cRoshan caught you!", "color: red; font-size: 40px; font-weight: bold;");
+            console.log("%cUnauthorized access is prohibited!.", "color: red; font-size: 20px;");
         }, 1000);
 
         // Auto-reboot on startup
